@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <h1>main layout</h1>
+  <div class="min-h-dvh">
     <Header />
-    <Sidebar />
     <main> <slot></slot> </main>
     <Footer />
   </div>

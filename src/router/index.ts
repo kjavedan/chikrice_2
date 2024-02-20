@@ -3,20 +3,49 @@ import type { RouteRecordRaw } from 'vue-router'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 // Layouts
-import { SimpleLayout, AuthLayout, MainLayout } from '@/layout'
+import { AuthLayout, MainLayout } from '@/layout'
 
 // Components
-const GuideView = () => import('@/views/Guide/GuideView.vue')
+const HomeView = () => import('@/views/Home/HomeView.vue')
 const LoginView = () => import('@/views/Login/LoginView.vue')
-const ProfileView = () => import('@/views/Profile/ProfileView.vue')
-const ComponentView = () => import('@/views/Component/ComponentView.vue')
 
 const routes = [
   {
-    path: '/guide',
-    component: GuideView,
+    path: '/',
+    name: 'home',
+    component: HomeView,
     meta: {
-      layout: SimpleLayout,
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
+  {
+    path: '/meal-plan-generator',
+    name: 'meal',
+    component: HomeView,
+    meta: {
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
+  {
+    path: '/workout-plan-generator',
+    name: 'workout',
+    component: HomeView,
+    meta: {
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
+  {
+    path: '/bmr-calculator',
+    name: 'bmr',
+    component: HomeView,
+    meta: {
+      layout: MainLayout,
       requiresAuth: false,
       onlyGuestAllowed: false
     }
@@ -28,24 +57,6 @@ const routes = [
       layout: AuthLayout,
       requiresAuth: false,
       onlyGuestAllowed: true
-    }
-  },
-  {
-    path: '/profile',
-    component: ProfileView,
-    meta: {
-      layout: MainLayout,
-      requiresAuth: true,
-      onlyGuestAllowed: false
-    }
-  },
-  {
-    path: '/component',
-    component: ComponentView,
-    meta: {
-      layout: SimpleLayout,
-      requiresAuth: false,
-      onlyGuestAllowed: false
     }
   }
 ]

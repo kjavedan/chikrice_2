@@ -1,4 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useAppStoreWithOut } from '@/store/modules/app'
+
+const { initTheme } = useAppStoreWithOut()
+
+onMounted(() => {
+  initTheme()
+})
+</script>
 
 <template>
   <el-config-provider namespace="ep">

@@ -1,3 +1,6 @@
 {
-  "hello": "hello"
+  "home": "Home",
+  "mealPlanGenerator": "Meal plan Generator",
+  "workoutPlanGenerator": "Workout plan generator",
+  "bmrCalculator": "Bmr Calculator"
 }

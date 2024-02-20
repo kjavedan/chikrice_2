@@ -1,6 +1,10 @@
 <template>
   <div>
-    <ElButton @click="switchTheme">change theme</ElButton>
+    <ElButton @click="switchTheme" type="info" text
+      ><div
+        class="i-line-md:moon-to-sunny-outline-transition dark:i-line-md:sunny-filled-loop-to-moon-filled-loop-transition h-8"
+      ></div
+    ></ElButton>
   </div>
 </template>
 

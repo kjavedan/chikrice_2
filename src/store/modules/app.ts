@@ -9,8 +9,7 @@ export const useAppStore = defineStore('app', () => {
   // Theme
   const isDark = ref<Boolean>(getStorage('isDark') || false)
 
-  const switchTheme = () => {
-    isDark.value = !isDark.value
+  const initTheme = () => {
     if (isDark.value) {
       document.documentElement.classList.add('dark')
       document.documentElement.classList.remove('light')
@@ -20,7 +19,13 @@ export const useAppStore = defineStore('app', () => {
     }
     setStorage('isDark', isDark.value)
   }
-  return { isDark, switchTheme }
+
+  const switchTheme = () => {
+    isDark.value = !isDark.value
+    initTheme()
+  }
+
+  return { isDark, initTheme, switchTheme }
 })
 
 export const useAppStoreWithOut = () => {

@@ -1,3 +1,6 @@
 {
-  "hello": "你好"
+  "home": "家",
+  "mealPlanGenerator": "膳食计划生成器",
+  "workoutPlanGenerator": "锻炼计划生成器",
+  "bmrCalculator": "基础代谢率计算器"
 }

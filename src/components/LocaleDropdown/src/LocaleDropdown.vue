@@ -2,7 +2,7 @@
 import { unref } from 'vue'
 import { useLocale } from '@/hooks/web/useLocale'
 import { useLocaleStoreWithOut } from '@/store/modules/locale'
-import { ElButton, ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus'
+import { ElDropdown, ElDropdownMenu, ElDropdownItem } from 'element-plus'
 
 const { currentLocale, localeMap, setCurrentLocale } = useLocaleStoreWithOut()
 
@@ -17,8 +17,8 @@ const setLang = (newLang: LocaleType) => {
 </script>
 
 <template>
-  <ElDropdown trigger="click" @command="setLang">
-    <ElButton>{{ currentLocale.lang }}</ElButton>
+  <ElDropdown trigger="hover" @command="setLang">
+    <div class="i-heroicons-solid:translate cursor-pointer"></div>
     <template #dropdown>
       <ElDropdownMenu>
         <ElDropdownItem v-for="item in localeMap" :key="item.lang" :command="item.lang">{{

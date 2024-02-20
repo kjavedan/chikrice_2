@@ -5,13 +5,17 @@ import { useStorage } from '@/hooks/web/useStorage'
 import { LocaleDropdownType } from '@/components/LocaleDropdown'
 
 import en from 'element-plus/es/locale/lang/en'
+import ar from 'element-plus/es/locale/lang/ar'
+import fa from 'element-plus/es/locale/lang/fa'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
 
 const { getStorage, setStorage } = useStorage()
 
 const elLocaleMap = {
   'zh-CN': zhCn,
-  en: en
+  en: en,
+  ar: ar,
+  fa: fa
 }
 
 export const useLocaleStore = defineStore('locales', () => {
@@ -28,6 +32,14 @@ export const useLocaleStore = defineStore('locales', () => {
     {
       lang: 'zh-CN',
       name: 'Chinese'
+    },
+    {
+      lang: 'ar',
+      name: 'Arabic'
+    },
+    {
+      lang: 'fa',
+      name: 'Farsi'
     }
   ])
 
