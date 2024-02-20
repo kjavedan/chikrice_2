@@ -34,7 +34,6 @@ const headerClasses = computed(() => ({
 
 <style lang="scss">
 .nav-link {
-  font-weight: bold;
   color: var(--ep-text-color-primary);
   transition: all ease-in-out 0.1s;
 
@@ -44,6 +43,8 @@ const headerClasses = computed(() => ({
 
   &.active {
     color: var(--ep-color-primary);
+    text-decoration: underline;
+    text-decoration-style: dotted;
   }
 }
 

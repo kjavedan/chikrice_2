@@ -30,6 +30,7 @@
   --ep-text-color-regular: #000;
   --ep-text-color-secondary: #a7a7a7;
   --ep-bg-input: #ecf1f4;
+  --ep-bg-color: #fbfbfb !important;
   // FONTS
   --ep-font-family: 'Titillium Web', 'Anton', sans-serif;
 
@@ -42,6 +43,8 @@
   --ep-border-color: var(--ep-color-info-light-5);
   --ep-border-width: 2px;
   --ep-select-border: 2px;
+  --ep-color-card: #e8e8e8;
+  --ep-color-gray: #d9d9d9;
 
   // SHADOWS
   --ep-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.08);
@@ -54,7 +57,11 @@ html.dark {
   // COLORS
   --ep-bg-color-overlay-hover: rgb(34, 34, 34);
   --ep-bg-input: #191919;
-
+  --ep-bg-color: #0c0c0c !important;
+  --ep-text-color-primary: #ffffff !important;
+  --ep-text-color-regular: #eeeeee !important;
+  --ep-color-card: #1b1b1b;
+  --ep-color-gray: #d9d9d9;
   // SHADOWS
   --ep-box-shadow-light: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }

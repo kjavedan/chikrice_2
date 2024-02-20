@@ -7,7 +7,10 @@
 
     <el-drawer v-model="drawer" :direction="'ltr'" class="pl-4" size="75%">
       <template #header>
-        <h3 @click="$router.push('/')" class="cursor-pointer text-black">
+        <h3
+          @click="$router.push('/')"
+          class="cursor-pointer text-3xl text-[var(--ep-text-color-primary)]"
+        >
           <span> Chik </span>
           <span class="text-stroke">Rice</span>
         </h3>
