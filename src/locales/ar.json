@@ -2,5 +2,8 @@
   "home": "بيت",
   "mealPlanGenerator": "مولد خطة دایت",
   "workoutPlanGenerator": "مولد خطة تمرینیه",
-  "bmrCalculator": "حاسبة Bmr"
+  "bmrCalculator": "حاسبة Bmr",
+  "generate": "تأليف",
+  "calculate": "احسب",
+  "allRightsReserved": "كل الحقوق محفوظة"
 }

@@ -45,6 +45,7 @@
   --ep-select-border: 2px;
   --ep-color-card: #e8e8e8;
   --ep-color-gray: #d9d9d9;
+  --ep-dialog-bg-color: #fbfbfb;
 
   // SHADOWS
   --ep-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.08);
@@ -62,6 +63,8 @@ html.dark {
   --ep-text-color-regular: #eeeeee !important;
   --ep-color-card: #1b1b1b;
   --ep-color-gray: #d9d9d9;
+  --ep-dialog-bg-color: #0c0c0c;
+
   // SHADOWS
   --ep-box-shadow-light: 0px 0px 20px rgba(0, 0, 0, 0.4);
 }

@@ -22,7 +22,7 @@
             :key="item.label"
             :to="{ name: item.name }"
             :class="['nav-link', { active: route.name === item.name }]"
-            >{{ item.label }}</RouterLink
+            >{{ $t(item.label) }}</RouterLink
           >
         </ul>
       </nav>
@@ -47,7 +47,7 @@ const route = useRoute()
 
 // REFS
 const drawer = ref(false)
-const navData = ref(navConfig())
+const navData = ref(navConfig)
 
 // HOOKS
 watch(route, () => {

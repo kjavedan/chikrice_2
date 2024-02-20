@@ -2,5 +2,8 @@
   "home": "صفحه اصلی",
   "mealPlanGenerator": "طراحی برنامه غذایی",
   "workoutPlanGenerator": "طراحی برنامه تمرینی",
-  "bmrCalculator": "Bmr محاسبه گر"
+  "bmrCalculator": "Bmr محاسبه گر",
+  "generate": "ايجاد كردن",
+  "calculate": "محاسبه",
+  "allRightsReserved": "تمامی حقوق محفوظ است"
 }

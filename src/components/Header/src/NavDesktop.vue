@@ -10,7 +10,7 @@
         :key="item.label"
         :to="{ name: item.name }"
         :class="['nav-link', { active: route.name === item.name }]"
-        >{{ item.label }}</RouterLink
+        >{{ $t(item.label) }}</RouterLink
       >
     </ul>
     <div class="flex items-center gap-3">
@@ -28,7 +28,7 @@ import navConfig from './nav-config'
 const route = useRoute()
 
 //refs
-const navData = ref(navConfig())
+const navData = ref(navConfig)
 </script>
 
 <style scoped lang="scss"></style>
