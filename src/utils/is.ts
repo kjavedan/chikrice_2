@@ -17,3 +17,7 @@ export const isLtr = (): Boolean => {
   const isLtrLocale = locale.value === 'en' || locale.value === 'zh-CN'
   return isLtrLocale ? true : false
 }
+
+export const isRotate = () => {
+  return isLtr() ? false : true
+}

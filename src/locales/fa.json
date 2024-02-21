@@ -5,5 +5,11 @@
   "bmrCalculator": "Bmr محاسبه گر",
   "generate": "ايجاد كردن",
   "calculate": "محاسبه",
-  "allRightsReserved": "تمامی حقوق محفوظ است"
+  "allRightsReserved": "تمامی حقوق محفوظ است",
+  "loseWeight": "کاهش وزن",
+  "gainWeight": "افزایش وزن",
+  "optimizePerformance": "بهبود عملکرد",
+  "whatMakesAGreatMealPlan": "چه چیزی یک برنامه غذایی عالی را ایجاد می کند",
+  "step": "گام",
+  "whatIsYourGoal": "هدف شما چیست؟"
 }

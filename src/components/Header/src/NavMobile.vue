@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between px-4 py-2">
+  <div class="flex items-center justify-between px-4 py-[10px]">
     <h3 @click="$router.push('/')" class="cursor-pointer">
       <span> Chik </span>
       <span class="text-stroke">Rice</span>

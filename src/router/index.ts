@@ -65,6 +65,16 @@ const routes = [
       onlyGuestAllowed: false
     }
   },
+  {
+    path: '/faq',
+    name: 'faq',
+    component: WorkoutPlanGeneratorView,
+    meta: {
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
 
   {
     path: '/login',
