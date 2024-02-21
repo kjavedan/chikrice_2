@@ -30,9 +30,14 @@ import { useI18n } from '@/hooks/web/useI18n'
 const { t } = useI18n()
 
 const sectionsData = ref([
-  { label: 'mealPlanGenerator', action: 'generate', name: 'meal', img: '🍇🥚🍚' },
-  { label: 'workoutPlanGenerator', action: 'generate', name: 'workout', img: '🏋️💪🏃‍♂️' },
-  { label: 'bmrCalculator', name: 'bmr', action: 'calculate', img: '📱✖️📄' }
+  { label: 'mealPlanGenerator', action: 'generate', name: 'mealPlanGenerator', img: '🍇🥚🍚' },
+  {
+    label: 'workoutPlanGenerator',
+    action: 'generate',
+    name: 'workoutPlanGenerator',
+    img: '🏋️💪🏃‍♂️'
+  },
+  { label: 'bmrCalculator', name: 'bmrCalculator', action: 'calculate', img: '📱✖️📄' }
 ])
 </script>
 

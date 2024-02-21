@@ -5,9 +5,14 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 // Layouts
 import { AuthLayout, MainLayout } from '@/layout'
 
-// Components
+// Views
 const HomeView = () => import('@/views/Home/HomeView.vue')
 const LoginView = () => import('@/views/Login/LoginView.vue')
+const BmrCalcularotView = () => import('@/views/BmrCalculator/BmrCalculatorView.vue')
+const MealPlanResultsView = () => import('@/views/MealPlanResults/MealPlanResultsView.vue')
+const MealPlanGeneratorView = () => import('@/views/MealPlanGenerator/MealPlanGeneratorView.vue')
+const WorkoutPlanGeneratorView = () =>
+  import('@/views/WorkoutPlanGenerator/WorkoutPlanGeneratorView.vue')
 
 const routes = [
   {
@@ -21,9 +26,29 @@ const routes = [
     }
   },
   {
+    path: '/bmr-calculator',
+    name: 'bmrCalculator',
+    component: BmrCalcularotView,
+    meta: {
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
+  {
+    path: '/meal-plan-results',
+    name: 'mealPlanResults',
+    component: MealPlanResultsView,
+    meta: {
+      layout: MainLayout,
+      requiresAuth: false,
+      onlyGuestAllowed: false
+    }
+  },
+  {
     path: '/meal-plan-generator',
-    name: 'meal',
-    component: HomeView,
+    name: 'mealPlanGenerator',
+    component: MealPlanGeneratorView,
     meta: {
       layout: MainLayout,
       requiresAuth: false,
@@ -32,24 +57,15 @@ const routes = [
   },
   {
     path: '/workout-plan-generator',
-    name: 'workout',
-    component: HomeView,
+    name: 'workoutPlanGenerator',
+    component: WorkoutPlanGeneratorView,
     meta: {
       layout: MainLayout,
       requiresAuth: false,
       onlyGuestAllowed: false
     }
   },
-  {
-    path: '/bmr-calculator',
-    name: 'bmr',
-    component: HomeView,
-    meta: {
-      layout: MainLayout,
-      requiresAuth: false,
-      onlyGuestAllowed: false
-    }
-  },
+
   {
     path: '/login',
     component: LoginView,
