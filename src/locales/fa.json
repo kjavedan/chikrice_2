@@ -13,5 +13,19 @@
   "step": "گام",
   "whatIsYourGoal": "هدف شما چیست؟",
   "enterYourCalories": "کالری روزانه خود را وارد کنید",
-  "dontKnow": "نمی دانم"
+  "dontKnow": "نمی دانم",
+  "height": "ارتفاع",
+  "weight": "وزن",
+  "age": "سن",
+  "gender": "جنسیت",
+  "activityLevel": "سطح فعالیت",
+  "activityLevel2": "ورزش 1-3 بار در هفته",
+  "activityLevel3": "ورزش 4-5 بار در هفته ",
+  "activityLevel4": "ورزش روزانه یا ورزش شدید 3-4 بار در هفته",
+  "activityLevel5": "ورزش شدید 6-7 بار در هفته",
+  "activityLevel6": "ورزش بسیار شدید روزانه یا کار فیزیکی",
+  "male": "مذکر",
+  "female": "مونث",
+  "use": "استفاده کنید",
+  "yourDailyCalories": "کالری روزانه شما عبارتند از:"
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderLink :question="stepData.question" :link="stepData.questionLink" />
-    <div class="flex items-end gap-4">
+    <div class="flex items-end gap-4 max-w-100">
       <ElInput
         v-model="userInputsData.calories"
         size="large"
@@ -28,8 +28,7 @@
 
     <template #footer>
       <div class="dialog-footer flex gap-2 justify-end">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false"> Confirm </el-button>
+        <ElButton type="primary" class="w-full"> {{ $t('use') }}</ElButton>
       </div>
     </template>
   </ElDialog>
@@ -40,7 +39,7 @@ import { ref } from 'vue'
 import HeaderLink from './HeaderLink.vue'
 import FooterLink from './FooterLink.vue'
 
-import { ElInput, ElDialog } from 'element-plus'
+import { ElInput, ElDialog, ElButton } from 'element-plus'
 
 import { PropsTypes } from '../types'
 

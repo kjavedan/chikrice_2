@@ -14,5 +14,19 @@
   "step": "Step",
   "whatIsYourGoal": "What is your goal?",
   "enterYourCalories": "Enter your daily calories",
-  "dontKnow": "Don't know"
+  "dontKnow": "Don't know",
+  "height": "Height",
+  "weight": "Weight",
+  "age": "Age",
+  "gender": "Gender",
+  "activityLevel": "Activity Level",
+  "activityLevel2": "Exercise 1-3 times/week",
+  "activityLevel3": "Exercise 4-5 times/week",
+  "activityLevel4": "Daily exercise or intense exercise 3-4 times/week",
+  "activityLevel5": "Intense exercise 6-7 times/week",
+  "activityLevel6": "Very intense exercise daily, or physical job",
+  "male": "Male",
+  "female": "Female",
+  "use": "Use",
+  "yourDailyCalories": "Your Daily calories is: "
 }

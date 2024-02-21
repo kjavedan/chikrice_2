@@ -13,5 +13,19 @@
   "step": "步",
   "whatIsYourGoal": "你的目标是什么？",
   "enterYourCalories": "输入您每天的卡路里摄入量",
-  "dontKnow": "不知道"
+  "dontKnow": "不知道",
+  "height": "高度",
+  "weight": "重量",
+  "age": "年龄",
+  "gender": "性别",
+  "activityLevel": "活动水平",
+  "activityLevel2": "每周锻炼1-3次",
+  "activityLevel3": "每周锻炼4-5次",
+  "activityLevel4": "每日锻炼或每周剧烈运动3-4次",
+  "activityLevel5": "每周剧烈运动6-7次",
+  "activityLevel6": "每天进行剧烈运动或体力工作",
+  "male": "男性",
+  "female": "女性",
+  "use": "使用",
+  "yourDailyCalories": "您每日的卡路里是："
 }
