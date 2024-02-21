@@ -1,9 +1,52 @@
 <template>
-  <div> step {{ stepData.step }} </div>
+  <div>
+    <HeaderLink :question="stepData.question" :link="stepData.questionLink" />
+    <div class="flex items-end gap-4">
+      <ElInput
+        v-model="userInputsData.calories"
+        size="large"
+        type="number"
+        :placeholder="$t('enterYourCalories')"
+        class="mt-2"
+      />
+      <div class="flex items-center gap-2">
+        <span class="whitespace-nowrap"> {{ $t('dontKnow') }}? </span>
+        <ElButton type="primary" text @click="dialogVisible = true">{{ $t('calculate') }}</ElButton>
+      </div>
+    </div>
+
+    <FooterLink :link="stepData.footerLink" :path="stepData.footerPath" /> kmln;lkj
+  </div>
+
+  <ElDialog
+    v-model="dialogVisible"
+    :title="$t('bmrCalculator')"
+    width="95%"
+    style="max-width: 500px"
+  >
+    <BmrCalculator />
+
+    <template #footer>
+      <div class="dialog-footer flex gap-2 justify-end">
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogVisible = false"> Confirm </el-button>
+      </div>
+    </template>
+  </ElDialog>
 </template>
 
 <script setup lang="ts">
-defineProps(['stepData'])
+import { ref } from 'vue'
+import HeaderLink from './HeaderLink.vue'
+import FooterLink from './FooterLink.vue'
+
+import { ElInput, ElDialog } from 'element-plus'
+
+import { PropsTypes } from '../types'
+
+const dialogVisible = ref(true)
+
+defineProps<PropsTypes>()
 </script>
 
 <style scoped></style>

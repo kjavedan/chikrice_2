@@ -11,5 +11,7 @@
   "optimizePerformance": "优化性能",
   "whatMakesAGreatMealPlan": "什么才是完美的膳食计划",
   "step": "步",
-  "whatIsYourGoal": "你的目标是什么？"
+  "whatIsYourGoal": "你的目标是什么？",
+  "enterYourCalories": "输入您每天的卡路里摄入量",
+  "dontKnow": "不知道"
 }

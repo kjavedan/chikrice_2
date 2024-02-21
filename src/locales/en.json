@@ -12,5 +12,7 @@
   "optimizePerformance": "Optimize performance",
   "whatMakesAGreatMealPlan": "What makes a great meal plan",
   "step": "Step",
-  "whatIsYourGoal": "What is your goal?"
+  "whatIsYourGoal": "What is your goal?",
+  "enterYourCalories": "Enter your daily calories",
+  "dontKnow": "Don't know"
 }

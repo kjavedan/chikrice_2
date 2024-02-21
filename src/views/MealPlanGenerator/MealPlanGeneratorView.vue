@@ -65,7 +65,7 @@ import { UserInputsTypes, OptionsTypes } from './types/index'
 const router = useRouter()
 
 // REFS
-const step = ref(1)
+const step = ref(3)
 
 const stepsData = ref(stepsConfig)
 
@@ -74,7 +74,7 @@ const optionsData = ref<OptionsTypes>(optionsConfig)
 const userInputsData = ref<UserInputsTypes>({
   snackNumber: 1,
   mealsNumber: 4,
-  calories: '2000',
+  calories: 2000,
   goalAchievementSpeed: 'moderate',
   goal: 'loseWeight',
   fats: ['oliveOil', 'regularOil'],

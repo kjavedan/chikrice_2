@@ -1,7 +1,7 @@
 export interface UserInputsTypes {
   snackNumber: number
   mealsNumber: number
-  calories: string
+  calories: number
   goalAchievementSpeed: 'slow' | 'moderate' | 'fast'
   goal: 'loseWeight' | 'gainWeight' // Assuming these are the only possible values
   fats: string[]
