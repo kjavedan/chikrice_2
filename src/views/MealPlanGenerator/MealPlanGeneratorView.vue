@@ -70,12 +70,16 @@ import Step9 from './components/Step9.vue'
 import Step10 from './components/Step10.vue'
 
 import { UserInputsTypes, OptionsTypes, MacrosTypes } from './types/index'
+import { useStorage } from '@/hooks/web/useStorage'
+
+// USE HOOKS
+const { getStorage, setStorage } = useStorage()
 
 // NAVIGATION
 const router = useRouter()
 
 // REFS
-const step = ref(5)
+const step = ref(getStorage('meal-plan-step') || 1)
 
 const stepsData = ref(stepsConfig)
 
@@ -87,7 +91,7 @@ const macrosRecommendation = ref<MacrosTypes>({
   proteins: 40
 })
 
-const userInputsData = ref<UserInputsTypes>({
+const defaultInputsData = {
   snackNumber: '1',
   mealsNumber: '3',
   calories: 2000,
@@ -106,7 +110,9 @@ const userInputsData = ref<UserInputsTypes>({
   fruits: ['apple', 'orange'],
   proteins: ['flankSteak', 'fish', 'eggs', 'chicken'],
   vegetables: ['tomato', 'lettuce', 'broccoli', 'cucumber', 'billPepper']
-})
+}
+
+const userInputsData = ref<UserInputsTypes>(getStorage('meal-plan-generator') || defaultInputsData)
 
 const stepComponents = ref(
   markRaw({
@@ -154,8 +160,10 @@ const updateMacrosRecommendation = () => {
 }
 
 // HOOKS
+watch(step, (newVal) => setStorage('meal-plan-step', newVal))
+
 watch(userInputsData.value, (newVal) => {
-  console.log(newVal.carbs)
+  setStorage('meal-plan-generator', newVal)
 })
 
 watch(
