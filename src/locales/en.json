@@ -90,5 +90,12 @@
   "mealsNumber": "Meals Number",
   "snacksNumber": "Snacks Number",
   "no": "No",
-  "yes": "Yes"
+  "yes": "Yes",
+  "caloriesError": "Calories Should be minimum 1200",
+  "back": "Back",
+  "next": "Next",
+  "proteinsError": "Protine items must be at least 2",
+  "carbsError": "Carbs items must be at least 2",
+  "fruitsError": "Fruits items must be at least 2",
+  "vegetablesError": "Vegetables items must be at least 2"
 }

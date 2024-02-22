@@ -31,4 +31,4 @@ import { PropsTypes } from '../types'
 defineProps<PropsTypes>()
 </script>
 
-<style scoped></style>
+<style></style>

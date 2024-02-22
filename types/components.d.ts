@@ -22,6 +22,7 @@ declare module 'vue' {
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
     Sidebar: (typeof import('./../src/components/Sidebar/src/Sidebar.vue'))['default']
+    StepError: (typeof import('./../src/components/StepError/src/StepError.vue'))['default']
     Test: (typeof import('./../src/components/BmrCalculator/src/test.vue'))['default']
     ThemeSwitch: (typeof import('./../src/components/ThemeSwitch/src/ThemeSwitch.vue'))['default']
   }

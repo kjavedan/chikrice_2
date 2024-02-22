@@ -38,6 +38,7 @@ export interface OptionsTypes {
 
 export interface PropsTypes {
   stepData: any
+  stepError: string
   optionsData: OptionsTypes
   userInputsData: UserInputsTypes
   macrosRecommendation: MacrosTypes

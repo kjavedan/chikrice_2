@@ -27,6 +27,7 @@
       :userInputsData="userInputsData"
       :onUpdate="onUpdateUserInputs"
       :optionsData="optionsData"
+      :stepError="stepError"
       :stepData="item"
       v-if="step === item.step"
     />
@@ -34,15 +35,22 @@
 
   <!-- Footer -->
   <div class="mt-15 flex gap-4 justify-end w-full">
-    <ElButton class="w-30" type="primary" plain :disabled="step === 1" @click="onBack"
-      >back</ElButton
+    <ElButton
+      type="primary"
+      plain
+      :disabled="isDisabled || step === 1"
+      @click="onBack"
+      class="w-30"
+      >{{ $t('back') }}</ElButton
     >
-    <ElButton class="w-30" type="primary" @click="onNext">Next</ElButton>
+    <ElButton type="primary" @click="onNext" :disabled="isDisabled" class="w-30">{{
+      $t('next')
+    }}</ElButton>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, markRaw, watch } from 'vue'
+import { ref, markRaw, watch, computed } from 'vue'
 import { isRotate } from '@/utils/is'
 import { useRouter } from 'vue-router'
 
@@ -115,6 +123,10 @@ const stepComponents = ref(
   })
 )
 
+const stepError = ref<String>('')
+
+const isDisabled = computed(() => (stepError.value ? true : false))
+
 // FUNCS
 const onNext = () => {
   if (step.value < 10) {
@@ -143,13 +155,40 @@ const updateMacrosRecommendation = () => {
 
 // HOOKS
 watch(userInputsData.value, (newVal) => {
-  console.log(newVal.proteins)
+  console.log(newVal.carbs)
 })
 
 watch(
   () => [userInputsData.value.budget, userInputsData.value.goal],
   () => {
     updateMacrosRecommendation()
+  }
+)
+
+watch(
+  () => [
+    userInputsData.value.carbs,
+    userInputsData.value.fruits,
+    userInputsData.value.calories,
+    userInputsData.value.proteins,
+    userInputsData.value.calories,
+    userInputsData.value.vegetables
+  ],
+  () => {
+    const { carbs, proteins, calories, fruits, vegetables } = userInputsData.value
+    if (calories < 1200) {
+      stepError.value = 'caloriesError'
+    } else if (proteins.length < 2) {
+      stepError.value = 'proteinsError'
+    } else if (carbs.length < 2) {
+      stepError.value = 'carbsError'
+    } else if (fruits.length < 2) {
+      stepError.value = 'fruitsError'
+    } else if (vegetables.length < 2) {
+      stepError.value = 'vegetablesError'
+    } else {
+      stepError.value = ''
+    }
   }
 )
 </script>

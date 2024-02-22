@@ -11,7 +11,7 @@
         <span>{{ $t(option.value) }}</span>
       </ElCheckbox>
     </ElCheckboxGroup>
-
+    <StepError :error="stepError" />
     <FooterLink :link="stepData.footerLink" :path="stepData.footerPath" />
   </div>
 </template>

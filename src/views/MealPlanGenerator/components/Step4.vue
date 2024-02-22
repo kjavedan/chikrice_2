@@ -160,4 +160,4 @@ const submitForm = (formEl: FormInstance | undefined) => {
 }
 </script>
 
-<style scoped></style>
+<style></style>
