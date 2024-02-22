@@ -39,7 +39,7 @@
   --ep-bg-color-overlay-hover: #efefef;
 
   // FONTS
-  --ep-font-family: 'Titillium Web', 'Anton', sans-serif;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif !important;
 
   // SPACING
   --ep-component-size: 45px;
@@ -53,8 +53,6 @@
 
   // SHADOWS
   --ep-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.08);
-
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 // DARK THEME

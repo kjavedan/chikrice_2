@@ -8,22 +8,18 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BmrCalculator: (typeof import('./../src/components/BmrCalculator/src/BmrCalculator.vue'))['default']
-    ElButton: (typeof import('element-plus/es'))['ElButton']
     ElConfigProvider: (typeof import('element-plus/es'))['ElConfigProvider']
-    ElDialog: (typeof import('element-plus/es'))['ElDialog']
     ElDrawer: (typeof import('element-plus/es'))['ElDrawer']
-    ElForm: (typeof import('element-plus/es'))['ElForm']
-    ElFormItem: (typeof import('element-plus/es'))['ElFormItem']
     Footer: (typeof import('./../src/components/Footer/src/Footer.vue'))['default']
     Header: (typeof import('./../src/components/Header/src/Header.vue'))['default']
     LocaleDropdown: (typeof import('./../src/components/LocaleDropdown/src/LocaleDropdown.vue'))['default']
+    Logo: (typeof import('./../src/components/Logo/src/Logo.vue'))['default']
     NavDesktop: (typeof import('./../src/components/Header/src/NavDesktop.vue'))['default']
     NavMobile: (typeof import('./../src/components/Header/src/NavMobile.vue'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
     Sidebar: (typeof import('./../src/components/Sidebar/src/Sidebar.vue'))['default']
     StepError: (typeof import('./../src/components/StepError/src/StepError.vue'))['default']
-    Test: (typeof import('./../src/components/BmrCalculator/src/test.vue'))['default']
     ThemeSwitch: (typeof import('./../src/components/ThemeSwitch/src/ThemeSwitch.vue'))['default']
   }
 }

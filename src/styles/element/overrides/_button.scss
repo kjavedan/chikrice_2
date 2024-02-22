@@ -5,6 +5,9 @@
     font-weight: bold;
   }
 
+  + .ep-button {
+    margin: 0 !important;
+  }
   &:active {
     transform: scale(0.99);
   }

@@ -34,7 +34,7 @@
   </div>
 
   <!-- Footer -->
-  <div class="mt-15 flex gap-4 justify-end w-full">
+  <div class="mt-15 flex gap-3 justify-end w-full">
     <ElButton
       type="primary"
       plain

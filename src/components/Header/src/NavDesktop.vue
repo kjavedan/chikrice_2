@@ -1,9 +1,6 @@
 <template>
   <nav class="flex items-center justify-between h-20 container mx-auto">
-    <h3 @click="$router.push('/')" class="cursor-pointer text-3xl">
-      <span> Chik </span>
-      <span class="text-stroke">Rice</span>
-    </h3>
+    <Logo size="lg" />
     <ul class="flex items-center gap-8">
       <RouterLink
         v-for="item in navData"

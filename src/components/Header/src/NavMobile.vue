@@ -1,19 +1,10 @@
 <template>
   <div class="flex items-center justify-between px-4 py-[10px]">
-    <h3 @click="$router.push('/')" class="cursor-pointer">
-      <span> Chik </span>
-      <span class="text-stroke">Rice</span>
-    </h3>
+    <Logo size="md" />
 
     <el-drawer v-model="drawer" :direction="'ltr'" class="pl-4" size="75%">
       <template #header>
-        <h3
-          @click="$router.push('/')"
-          class="cursor-pointer text-3xl text-[var(--ep-text-color-primary)]"
-        >
-          <span> Chik </span>
-          <span class="text-stroke">Rice</span>
-        </h3>
+        <Logo size="lg" />
       </template>
       <nav class="pt-20">
         <ul class="flex flex-col gap-12">

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "ts:check": "vue-tsc --noEmit --skipLibCheck",
+    "build:base": "vite build --mode base",
     "build:pro": "vite build --mode pro",
     "build:dev": "vite build --mode dev",
     "build:test": "npm run ts:check && vite build --mode test",
