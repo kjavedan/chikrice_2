@@ -8,7 +8,7 @@
         :key="option.value"
       >
         <span>{{ option.icon }}</span>
-        <span>{{ $t(option.label) }}</span>
+        <span>{{ $t(option.value) }}</span>
       </ElRadio>
     </ElRadioGroup>
 

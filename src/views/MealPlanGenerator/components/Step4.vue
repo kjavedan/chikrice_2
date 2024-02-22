@@ -16,11 +16,34 @@
         <b> ({{ $t(userInputsData.budget) }}) </b>
       </p>
 
-      <ul class="mt-8 grid gap-1 text-sm">
-        <li class="protein"> {{ macrosRecommendation.proteins }}% {{ $t('proteins') }} </li>
-        <li class="carb">{{ macrosRecommendation.carbs }}% {{ $t('carbs') }}</li>
-        <li class="fat">{{ macrosRecommendation.fats }}% {{ $t('fats') }}</li>
-      </ul>
+      <!-- Macros -->
+
+      <div class="mt-8 flex gap-5 md:gap-15 items-center">
+        <!-- Recommended Macros -->
+        <div>
+          <h6>Recommended</h6>
+          <ul class="grid gap-1 text-sm mt-1">
+            <li class="protein"> {{ macrosRecommendation.proteins }}% {{ $t('proteins') }} </li>
+            <li class="carb">{{ macrosRecommendation.carbs }}% {{ $t('carbs') }}</li>
+            <li class="fat">{{ macrosRecommendation.fats }}% {{ $t('fats') }}</li>
+          </ul>
+        </div>
+
+        <div
+          v-if="userInputsData.isMacrosCustomized"
+          class="i-octicon:arrow-right-16 w-2em h-2em"
+        ></div>
+
+        <div v-if="userInputsData.isMacrosCustomized">
+          <!-- Customized Macros -->
+          <h6>Customized</h6>
+          <ul class="grid gap-1 text-sm mt-1">
+            <li class="protein"> {{ userInputsData.macros.proteins }}% {{ $t('proteins') }} </li>
+            <li class="carb">{{ userInputsData.macros.carbs }}% {{ $t('carbs') }}</li>
+            <li class="fat">{{ userInputsData.macros.fats }}% {{ $t('fats') }}</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="my-8">
@@ -95,7 +118,7 @@ import { useI18n } from 'vue-i18n'
 const props = defineProps<PropsTypes>()
 
 const { t } = useI18n()
-const dialogVisible = ref(true)
+const dialogVisible = ref(false)
 
 const ruleFormRef = ref<FormInstance>()
 const rules = reactive<FormRules<MacrosTypes>>({
@@ -125,10 +148,13 @@ const submitForm = (formEl: FormInstance | undefined) => {
     const { fats, carbs, proteins } = macros.value
     const is100Percent = fats + carbs + proteins === 100 ? true : false
     if (valid && is100Percent) {
-      props.onUpdate('macros', macros.value)
+      props.onUpdate('macros', { fats, carbs, proteins })
+      props.onUpdate('isMacrosCustomized', true)
       dialogVisible.value = false
-    } else {
+    } else if (!is100Percent) {
       ElMessage.error(t('totalPercentageError'))
+    } else {
+      ElMessage.error(t('resolveErrors'))
     }
   })
 }

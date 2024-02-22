@@ -8,7 +8,7 @@
       @click="$router.push({ name: section.name })"
     >
       <div
-        class="w-full aspect-video bg-[var(--ep-color-card)] rounded-md mt-4 flex flex-col gap-5 text-center items-center justify-center"
+        class="w-full cursor-pointer aspect-video bg-[var(--ep-color-card)] rounded-md mt-4 flex flex-col gap-5 text-center items-center justify-center"
       >
         <div class="text-5xl">
           {{ section.img }}

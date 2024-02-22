@@ -7,7 +7,7 @@
         :key="goal.value"
         @click="onUpdate('goal', goal.value)"
         :class="[
-          'bg-[var(--ep-color-card)] rounded-md h-30 cursor-pointer md:h-50 lg:aspect-video lg:h-auto flex flex-col items-center justify-center gap-4',
+          'bg-[var(--ep-color-card)]  rounded-md h-30 cursor-pointer md:h-50 lg:aspect-video lg:h-auto flex flex-col items-center justify-center gap-4',
           {
             'b-solid border-[var(--ep-color-primary)] shadow-md shadow-[var(--ep-color-primary)]':
               userInputsData.goal === goal.value

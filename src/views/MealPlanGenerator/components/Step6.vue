@@ -1,9 +1,26 @@
 <template>
-  <div> step {{ stepData.step }} </div>
+  <div>
+    <HeaderLink :question="stepData.question" :link="stepData.questionLink" />
+    <ElCheckboxGroup v-model="userInputsData.carbs" class="grid gap-4 justify-start">
+      <ElCheckbox v-for="option in optionsData.carbs" :label="option.value" :key="option.value">
+        <span>{{ option.icon }}</span>
+        <span>{{ $t(option.value) }}</span>
+      </ElCheckbox>
+    </ElCheckboxGroup>
+
+    <FooterLink :link="stepData.footerLink" :path="stepData.footerPath" />
+  </div>
 </template>
 
 <script setup lang="ts">
-defineProps(['stepData'])
+import HeaderLink from './HeaderLink.vue'
+import FooterLink from './FooterLink.vue'
+
+import { ElCheckboxGroup, ElCheckbox } from 'element-plus'
+
+import { PropsTypes } from '../types'
+
+defineProps<PropsTypes>()
 </script>
 
 <style scoped></style>

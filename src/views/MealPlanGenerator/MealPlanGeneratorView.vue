@@ -1,7 +1,7 @@
 <template>
   <!-- Progress bar -->
   <div class="progress-bar">
-    <div class="progress-indicator" :style="{ width: (100 / 10.4) * step + '%' }"></div>
+    <div class="progress-indicator" :style="{ width: (100 / 10.1) * step + '%' }"></div>
     <span class="step-label">{{ step * 10 }}%</span>
   </div>
 
@@ -67,7 +67,7 @@ import { UserInputsTypes, OptionsTypes, MacrosTypes } from './types/index'
 const router = useRouter()
 
 // REFS
-const step = ref(4)
+const step = ref(5)
 
 const stepsData = ref(stepsConfig)
 
@@ -80,11 +80,12 @@ const macrosRecommendation = ref<MacrosTypes>({
 })
 
 const userInputsData = ref<UserInputsTypes>({
-  snackNumber: 1,
-  mealsNumber: 4,
+  snackNumber: '1',
+  mealsNumber: '3',
   calories: 2000,
   budget: 'enough',
   goalAchievementSpeed: 'moderate',
+  includeSweet: 'no',
   goal: 'loseWeight',
   fats: ['oliveOil', 'regularOil'],
   macros: {
@@ -92,6 +93,7 @@ const userInputsData = ref<UserInputsTypes>({
     carbs: 40,
     fats: 20
   },
+  isMacrosCustomized: false,
   carbs: ['oats', 'rice', 'potato'],
   fruits: ['apple', 'orange'],
   proteins: ['flankSteak', 'fish', 'eggs', 'chicken'],
@@ -117,6 +119,7 @@ const stepComponents = ref(
 const onNext = () => {
   if (step.value < 10) {
     step.value++
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
   } else if (step.value == 10) {
     router.push({ name: 'mealPlanResults' })
   }
@@ -124,6 +127,7 @@ const onNext = () => {
 
 const onBack = () => {
   if (step.value > 1) {
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
     step.value--
   }
 }
@@ -139,7 +143,7 @@ const updateMacrosRecommendation = () => {
 
 // HOOKS
 watch(userInputsData.value, (newVal) => {
-  console.log(newVal.budget)
+  console.log(newVal.proteins)
 })
 
 watch(

@@ -123,75 +123,73 @@ export const budgetData = {
 const goalsOptions = [
   {
     value: 'loseWeight',
-    label: 'Lose weight',
     icon: '🏃‍♂️🍓🥝'
   },
   {
     value: 'gainWeight',
-    label: 'Gain weight',
     icon: '🤸‍♂️🏋️🍚'
   },
   {
     value: 'optimizePerformance',
-    label: 'Optimize Performance',
     icon: '⚡💡☕'
   }
 ]
 
 const proteinsOptions = [
-  { label: '🥜 Nuts', value: 'nuts' },
-  { label: '🧈 tofu', value: 'tofu' },
-  { label: '🐟 Fish', value: 'fish' },
-  { label: '🥚 Eggs', value: 'eggs' },
-  { label: '🦃 Turkey ', value: 'turkey' },
-  { label: '🍳 Egg White', value: 'eggWhite' },
-  { label: '🐔 Chicken Breast', value: 'chicken' },
-  { label: '🥩 Flank Steak', value: 'flankSteak' },
-  { label: '🧋 Protein Whey', value: 'proteinWhey' },
-  { label: '🥛 Greek Yogurt', value: 'greekYogurt' },
-  { label: '🍔 lean Grounded Beef', value: 'groundBeef' }
+  { icon: '🥜', value: 'nuts' },
+  { icon: '🧈', value: 'tofu' },
+  { icon: '🐟', value: 'fish' },
+  { icon: '🥚', value: 'eggs' },
+  { icon: '🦃', value: 'turkey' },
+  { icon: '🍳', value: 'eggWhite' },
+  { icon: '🐔', value: 'chicken' },
+  { icon: '🥩', value: 'flankSteak' },
+  { icon: '🧋', value: 'proteinWhey' },
+  { icon: '🥛', value: 'greekYogurt' },
+  { icon: '🍔', value: 'groundBeef' }
 ]
 
 const carbsOptions = [
-  { label: '🍚 Rice', value: 'rice' },
-  { label: '🌽 Corn', value: 'corn' },
-  { label: '🌾 Oats', value: 'oats' },
-  { label: '🍝 Pasta', value: 'pasta' },
-  { label: '🥖 Bread', value: 'bread' },
-  { label: '🥔 Potato', value: 'potato' },
-  { label: '🍠 Sweet Potato', value: 'sweetPotato' },
-  { label: '🫘 beans & Lentils', value: 'beansLentils' }
+  { icon: '🍚', value: 'rice' },
+  { icon: '🌽', value: 'corn' },
+  { icon: '🌾', value: 'oats' },
+  { icon: '🍝', value: 'pasta' },
+  { icon: '🥖', value: 'bread' },
+  { icon: '🥔', value: 'potato' },
+  { icon: '🍠', value: 'sweetPotato' },
+  { icon: '🫘', value: 'beansLentils' }
 ]
+
 const fruitsOptions = [
-  { label: '🍏 Apple', value: 'apple' },
-  { label: '🍌 Banana', value: 'banana' },
-  { label: '🍇 Grapes', value: 'grapes' },
-  { label: '🍊 Orange', value: 'orange' },
-  { label: '🍍 Pineapple', value: 'pineapple' },
-  { label: '🍓 Strawberry', value: 'strawberry' }
+  { icon: '🍏', value: 'apple' },
+  { icon: '🍌', value: 'banana' },
+  { icon: '🍇', value: 'grapes' },
+  { icon: '🍊', value: 'orange' },
+  { icon: '🍍', value: 'pineapple' },
+  { icon: '🍓', value: 'strawberry' }
 ]
 
 const vegetablesOptions = [
-  { label: '🧅 Onion', value: 'onion' },
-  { label: '🍅 Tomato', value: 'tomato' },
-  { label: '🥕 Carrots', value: 'carrots' },
-  { label: '🥬 Lettuce', value: 'lettuce' },
-  { label: '🥑 Avocado', value: 'avocado' },
-  { label: '🍃 Spinach', value: 'spinach' },
-  { label: '🥦 Broccoli', value: 'broccoli' },
-  { label: '🍠 Zucchini', value: 'zucchini' },
-  { label: '🍆 Eggplant', value: 'eggplant' },
-  { label: '🥒 Cucumber', value: 'cucumber' },
-  { label: '🫛 Green Beans', value: 'greenBeans' },
-  { label: '🫑 Bill Pepper', value: 'billPepper' }
+  { icon: '🧅', value: 'onion' },
+  { icon: '🍅', value: 'tomato' },
+  { icon: '🥕', value: 'carrots' },
+  { icon: '🥬', value: 'lettuce' },
+  { icon: '🥑', value: 'avocado' },
+  { icon: '🍃', value: 'spinach' },
+  { icon: '🥦', value: 'broccoli' },
+  { icon: '🍠', value: 'zucchini' },
+  { icon: '🍆', value: 'eggplant' },
+  { icon: '🥒', value: 'cucumber' },
+  { icon: '🫛', value: 'greenBeans' },
+  { icon: '🫑', value: 'billPepper' }
 ]
 
-const fatsOptions = [{ label: '🌻 Any Type of Oil', value: 'oil' }]
+const fatsOptions = [{ icon: '🌻', value: 'oil' }]
 
 const speedOptions = [
-  { value: 'slow', label: 'Slow', icon: '🐌' },
-  { value: 'moderate', label: 'Moderate (recommended)', icon: '🚶' },
-  { value: 'fast', label: 'Fast', icon: '🏃‍♂️' }
+  { icon: '🐌', value: 'slow' },
+  { icon: '🚶', value: 'moderate' },
+  { icon: '🏃‍♂️', value: 'fast' }
 ]
 
 export const optionsConfig = {

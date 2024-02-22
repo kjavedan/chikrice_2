@@ -1,12 +1,14 @@
 export interface UserInputsTypes {
-  snackNumber: number
-  mealsNumber: number
+  snackNumber: string
+  mealsNumber: string
   budget: 'enough' | 'low'
   calories: number
   goalAchievementSpeed: 'slow' | 'moderate' | 'fast'
+  includeSweet: 'no' | 'yes'
   goal: 'loseWeight' | 'gainWeight' | 'optimzePerformance'
   fats: string[]
   macros: MacrosTypes
+  isMacrosCustomized: Boolean
   carbs: string[]
   fruits: string[]
   proteins: string[]
@@ -15,7 +17,6 @@ export interface UserInputsTypes {
 
 interface Option {
   value: string
-  label: string
   icon?: string
 }
 
