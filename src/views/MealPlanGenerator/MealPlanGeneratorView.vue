@@ -23,6 +23,7 @@
     <!-- Active step -->
     <component
       :is="stepComponents[item.step]"
+      :macrosRecommendation="macrosRecommendation"
       :userInputsData="userInputsData"
       :onUpdate="onUpdateUserInputs"
       :optionsData="optionsData"
@@ -47,7 +48,7 @@ import { useRouter } from 'vue-router'
 
 import { ElButton } from 'element-plus'
 
-import { stepsConfig, optionsConfig } from './data.ts'
+import { stepsConfig, optionsConfig, budgetData } from './data.ts'
 
 import Step1 from './components/Step1.vue'
 import Step2 from './components/Step2.vue'
@@ -59,28 +60,37 @@ import Step7 from './components/Step7.vue'
 import Step8 from './components/Step8.vue'
 import Step9 from './components/Step9.vue'
 import Step10 from './components/Step10.vue'
-import { UserInputsTypes, OptionsTypes } from './types/index'
+
+import { UserInputsTypes, OptionsTypes, MacrosTypes } from './types/index'
 
 // NAVIGATION
 const router = useRouter()
 
 // REFS
-const step = ref(3)
+const step = ref(4)
 
 const stepsData = ref(stepsConfig)
 
 const optionsData = ref<OptionsTypes>(optionsConfig)
 
+const macrosRecommendation = ref<MacrosTypes>({
+  fats: 20,
+  carbs: 40,
+  proteins: 40
+})
+
 const userInputsData = ref<UserInputsTypes>({
   snackNumber: 1,
   mealsNumber: 4,
   calories: 2000,
+  budget: 'enough',
   goalAchievementSpeed: 'moderate',
   goal: 'loseWeight',
   fats: ['oliveOil', 'regularOil'],
   macros: {
-    loseWeight: { proteins: '35', carbs: '40', fats: '25' },
-    gainWeight: { proteins: '30', carbs: '40', fats: '30' }
+    proteins: 40,
+    carbs: 40,
+    fats: 20
   },
   carbs: ['oats', 'rice', 'potato'],
   fruits: ['apple', 'orange'],
@@ -122,10 +132,22 @@ const onUpdateUserInputs = (key: string, value: any) => {
   userInputsData.value[key] = value
 }
 
+const updateMacrosRecommendation = () => {
+  const { budget, goal } = userInputsData.value
+  macrosRecommendation.value = budgetData[budget][goal]
+}
+
 // HOOKS
-watch(userInputsData, () => {
-  console.log(userInputsData)
+watch(userInputsData.value, (newVal) => {
+  console.log(newVal.budget)
 })
+
+watch(
+  () => [userInputsData.value.budget, userInputsData.value.goal],
+  () => {
+    updateMacrosRecommendation()
+  }
+)
 </script>
 
 <style lang="scss" scoped>

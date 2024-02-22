@@ -70,23 +70,29 @@ import { ref, watch, onMounted } from 'vue'
 
 import {
   ElForm,
-  ElFormItem,
+  ElRadio,
   ElInput,
   ElSelect,
   ElOption,
-  ElRadioGroup,
-  ElRadio
+  ElFormItem,
+  ElRadioGroup
 } from 'element-plus'
+
+interface PropsTypes {
+  updateCalories: (value: string) => void
+}
+
+const props = defineProps<PropsTypes>()
 
 const formData = ref({
   age: 25,
   weight: 75,
   height: 180,
+  calories: '',
   gender: 'male',
-  activityLevel: '1',
   weightUnit: 'kg',
   heightUnit: 'cm',
-  calories: ''
+  activityLevel: '1'
 })
 
 // Function to convert different units to CM for height
@@ -113,6 +119,7 @@ const calculateBMR = () => {
 
   const result = bmr * Number(activityLevel)
   formData.value.calories = result.toFixed(0)
+  props.updateCalories(formData.value.calories)
 }
 
 watch(

@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <FooterLink :link="stepData.footerLink" :path="stepData.footerPath" /> kmln;lkj
+    <FooterLink :link="stepData.footerLink" :path="stepData.footerPath" />
   </div>
 
   <ElDialog
@@ -24,11 +24,11 @@
     width="95%"
     style="max-width: 500px"
   >
-    <BmrCalculator />
+    <BmrCalculator :updateCalories="handleUpdate" />
 
     <template #footer>
       <div class="dialog-footer flex gap-2 justify-end">
-        <ElButton type="primary" class="w-full"> {{ $t('use') }}</ElButton>
+        <ElButton type="primary" @click="handleUse" class="w-full"> {{ $t('use') }}</ElButton>
       </div>
     </template>
   </ElDialog>
@@ -43,9 +43,19 @@ import { ElInput, ElDialog, ElButton } from 'element-plus'
 
 import { PropsTypes } from '../types'
 
-const dialogVisible = ref(true)
+const props = defineProps<PropsTypes>()
 
-defineProps<PropsTypes>()
+const calories = ref('2000')
+const dialogVisible = ref(false)
+
+const handleUpdate = (value: string): void => {
+  calories.value = value
+}
+
+const handleUse = (): void => {
+  props.onUpdate('calories', calories)
+  dialogVisible.value = false
+}
 </script>
 
 <style scoped></style>

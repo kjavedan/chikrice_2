@@ -82,6 +82,44 @@ export const stepsConfig = [
   }
 ]
 
+export const budgetData = {
+  enough: {
+    loseWeight: {
+      proteins: 40,
+      carbs: 40,
+      fats: 20
+    },
+    gainWeight: {
+      proteins: 30,
+      carbs: 50,
+      fats: 20
+    },
+    optimizePerformance: {
+      proteins: 35,
+      carbs: 45,
+      fats: 20
+    }
+  },
+
+  low: {
+    loseWeight: {
+      proteins: 35,
+      carbs: 45,
+      fats: 20
+    },
+    gainWeight: {
+      proteins: 25,
+      carbs: 50,
+      fats: 25
+    },
+    optimizePerformance: {
+      proteins: 30,
+      carbs: 45,
+      fats: 25
+    }
+  }
+}
+
 const goalsOptions = [
   {
     value: 'loseWeight',
@@ -149,6 +187,7 @@ const vegetablesOptions = [
 ]
 
 const fatsOptions = [{ label: '🌻 Any Type of Oil', value: 'oil' }]
+
 const speedOptions = [
   { value: 'slow', label: 'Slow', icon: '🐌' },
   { value: 'moderate', label: 'Moderate (recommended)', icon: '🚶' },

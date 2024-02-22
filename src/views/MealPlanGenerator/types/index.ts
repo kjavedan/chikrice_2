@@ -1,14 +1,12 @@
 export interface UserInputsTypes {
   snackNumber: number
   mealsNumber: number
+  budget: 'enough' | 'low'
   calories: number
   goalAchievementSpeed: 'slow' | 'moderate' | 'fast'
-  goal: 'loseWeight' | 'gainWeight' // Assuming these are the only possible values
+  goal: 'loseWeight' | 'gainWeight' | 'optimzePerformance'
   fats: string[]
-  macros: {
-    loseWeight: { proteins: string; carbs: string; fats: string }
-    gainWeight: { proteins: string; carbs: string; fats: string }
-  }
+  macros: MacrosTypes
   carbs: string[]
   fruits: string[]
   proteins: string[]
@@ -20,6 +18,13 @@ interface Option {
   label: string
   icon?: string
 }
+
+export interface MacrosTypes {
+  fats: number
+  carbs: number
+  proteins: number
+}
+
 export interface OptionsTypes {
   fats: Option[]
   goals: Option[]
@@ -34,5 +39,6 @@ export interface PropsTypes {
   stepData: any
   optionsData: OptionsTypes
   userInputsData: UserInputsTypes
+  macrosRecommendation: MacrosTypes
   onUpdate: (key: string, value: any) => void
 }
