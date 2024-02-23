@@ -1,7 +1,7 @@
 <template>
   <div :style="styles" :class="['text-center']">
     <div class="text-xs font-bold md:text-sm">
-      <small class="block md:inline"> ({{ amount }})g </small>
+      <small class="block md:inline"> {{ amount }}g </small>
       <small class="block md:inline">
         {{ $t(name) }}
       </small>
