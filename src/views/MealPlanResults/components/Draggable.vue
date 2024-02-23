@@ -1,20 +1,24 @@
 <template>
-  <div class="mt-8">
-    <draggable v-model="rows" item-key="id" handle=".handle-meal">
+  <div>
+    <draggable v-model="mealPlanData" item-key="id" handle=".handle-meal">
       <template #item="{ index }">
         <div class="mb-8">
           <div class="flex justify-between items-center">
-            <p class="underline font-bold">Meal {{ index + 1 }}(250cal)</p>
+            <p
+              class="py-1.5 px-4 bg-[var(--ep-color-card)] rounded-md w-fit mt-6 font-bold whitespace-nowrap"
+              >{{ $t('meal') }} {{ index + 1 }}</p
+            >
             <!-- Actions -->
             <div class="flex gap-3 cursor-pointer">
-              <div class="i-clarity:edit-solid icon"></div>
               <div
                 class="i-akar-icons:drag-horizontal-fill handle-meal w-5 h-5 cursor-move icon"
               ></div>
             </div>
           </div>
+          <MacrosInfo :macrosDetails="macrosDetails" :macrosRatio="macrosRatio" />
+
           <draggable
-            v-model="rows[index].items"
+            v-model="mealPlanData[index].items"
             handle=".handle-food"
             group="people"
             class="mt-2"
@@ -35,134 +39,21 @@
 
 <script setup lang="ts">
 import draggable from 'vuedraggable'
-import { ref } from 'vue'
 
-const rows = ref([
-  {
-    id: 1,
-    calories: 10,
-    macros: {
-      pro: 10,
-      carbs: 10,
-      fats: 10
-    },
-    items: [
-      {
-        value: 'Eggs  - (150g) ~ 3eggs ',
-        icon: '🥚',
-        id: 2
-      },
-      {
-        value: 'Bread  - (70g) ~ 2.8slice ',
-        icon: '🍞',
-        id: 3
-      },
-      {
-        value: 'Vegetables  - eat as you wish 🤷‍♂️ ',
-        icon: '🥬',
-        id: 4
-      },
-      {
-        value: 'Regular oil  - (15g) ~ 1 table spoon ',
-        icon: '🌻',
-        id: 5
-      }
-    ]
-  },
-  {
-    id: 6,
-    calories: 10,
-    macros: {
-      pro: 10,
-      carbs: 10,
-      fats: 10
-    },
-    items: [
-      {
-        value: 'Eggs  - (150g) ~ 3eggs ',
-        icon: '🥚',
-        id: 7
-      },
-      {
-        value: 'Bread  - (70g) ~ 2.8slice ',
-        icon: '🍞',
-        id: 8
-      },
-      {
-        value: 'Vegetables  - eat as you wish 🤷‍♂️ ',
-        icon: '🥬',
-        id: 9
-      },
-      {
-        value: 'Regular oil  - (15g) ~ 1 table spoon ',
-        icon: '🌻',
-        id: 10
-      }
-    ]
-  },
-  {
-    id: 11,
-    calories: 10,
-    macros: {
-      pro: 10,
-      carbs: 10,
-      fats: 10
-    },
-    items: [
-      {
-        value: 'Eggs  - (150g) ~ 3eggs ',
-        icon: '🥚',
-        id: 12
-      },
-      {
-        value: 'Bread  - (70g) ~ 2.8slice ',
-        icon: '🍞',
-        id: 13
-      },
-      {
-        value: 'Vegetables  - eat as you wish 🤷‍♂️ ',
-        icon: '🥬',
-        id: 14
-      },
-      {
-        value: 'Regular oil  - (15g) ~ 1 table spoon ',
-        icon: '🌻',
-        id: 15
-      }
-    ]
-  },
-  {
-    id: 16,
-    calories: 10,
-    macros: {
-      pro: 10,
-      carbs: 10,
-      fats: 10
-    },
-    items: [
-      {
-        value: 'Eggs  - (150g) ~ 3eggs ',
-        icon: '🥚',
-        id: 17
-      },
-      {
-        value: 'Bread  - (70g) ~ 2.8slice ',
-        icon: '🍞',
-        id: 18
-      },
-      {
-        value: 'Vegetables  - eat as you wish 🤷‍♂️ ',
-        icon: '🥬',
-        id: 19
-      },
-      {
-        value: 'Regular oil  - (15g) ~ 1 table spoon ',
-        icon: '🌻',
-        id: 20
-      }
-    ]
-  }
-])
+import MacrosInfo from './MacrosInfo.vue'
+
+import type { MacrosDetailTypes } from '../types'
+import type { MacrosTypes } from '../../MealPlanGenerator/types/index'
+import { toRefs } from 'vue'
+
+interface PropsTypes {
+  macrosDetails: MacrosDetailTypes
+  macrosRatio: MacrosTypes
+  mealPlanData: any
+}
+const props = defineProps<PropsTypes>()
+
+const { mealPlanData } = toRefs(props)
 </script>
 
 <style scoped>

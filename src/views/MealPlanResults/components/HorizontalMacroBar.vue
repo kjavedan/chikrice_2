@@ -1,15 +1,14 @@
 <template>
-  <div :style="styles" :class="['text-center']">
-    <div class="text-xs font-bold md:text-sm">
-      <small class="block md:inline"> {{ amount }}g </small>
-      <small class="block md:inline">
-        {{ $t(name) }}
-      </small>
-    </div>
+  <div :style="styles">
     <div>
+      <div class="text-xs font-semibold md:text-xs">
+        <small class="block">
+          {{ $t(name) }}: <b>{{ amount }} </b> g
+        </small>
+      </div>
       <div
         :class="[
-          'h-2 rounded-md w-full',
+          'h-1  text-white rounded-md w-full',
           { 'bg-[var(--ep-color-error)]': name === 'proteins' },
           { 'bg-[var(--ep-color-success)]': name === 'carbs' },
           { 'bg-[var(--ep-color-warning)]': name === 'fats' }

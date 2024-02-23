@@ -109,5 +109,9 @@
   "days": "天",
   "vegetables": "蔬菜",
   "fruits": "水果",
-  "gram": "公克"
+  "gram": "公克",
+  "meal": "一顿饭",
+  "day": "天",
+  "icons": "图标",
+  "youCanCustomizeMealPlan": "您可以通过拖放来自定义您的膳食计划"
 }
