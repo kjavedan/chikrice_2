@@ -15,7 +15,7 @@ export interface UserInputsTypes {
   vegetables: string[]
 }
 
-interface Option {
+export interface FoodListItemTypes {
   value: string
   icon?: string
 }
@@ -27,13 +27,13 @@ export interface MacrosTypes {
 }
 
 export interface OptionsTypes {
-  fats: Option[]
-  goals: Option[]
-  carbs: Option[]
-  fruits: Option[]
-  proteins: Option[]
-  vegetables: Option[]
-  goalAchievementSpeed: Option[]
+  fats: FoodListItemTypes[]
+  goals: FoodListItemTypes[]
+  carbs: FoodListItemTypes[]
+  fruits: FoodListItemTypes[]
+  proteins: FoodListItemTypes[]
+  vegetables: FoodListItemTypes[]
+  goalAchievementSpeed: FoodListItemTypes[]
 }
 
 export interface PropsTypes {

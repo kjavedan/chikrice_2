@@ -96,5 +96,17 @@
   "proteinsError": "蛋白质项目必须至少为 2",
   "carbsError": "碳水化合物项目必须至少为 2",
   "fruitsError": "水果项目必须至少为 2",
-  "vegetablesError": "蔬菜项目必须至少为 2"
+  "vegetablesError": "蔬菜项目必须至少为 2",
+  "mealPlanCongrats": "恭喜您的计划已准备就绪",
+  "editMealPlan": "编辑您的膳食计划",
+  "month": "月",
+  "numberOfDays": "天数",
+  "goal": "目标",
+  "calories": "卡路里",
+  "macros": "宏",
+  "timeToCommit": "是时候做出承诺了",
+  "groceryList": "购物清单",
+  "days": "天",
+  "vegetables": "蔬菜",
+  "fruits": "水果"
 }

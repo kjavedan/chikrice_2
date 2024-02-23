@@ -117,7 +117,7 @@ const calculateBMR = () => {
     bmr = 447.593 + 9.247 * weightInKG + 3.098 * heightInCM - 4.33 * age
   }
 
-  const result = bmr * Number(activityLevel)
+  const result = bmr * +activityLevel
   formData.value.calories = result.toFixed(0)
   props.updateCalories(formData.value.calories)
 }

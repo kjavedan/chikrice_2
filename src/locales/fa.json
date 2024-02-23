@@ -96,5 +96,17 @@
   "proteinsError": "اقلام پروتئینی باید حداقل 2 عدد باشد",
   "carbsError": "اقلام کربوهیدرات باید حداقل 2 باشد",
   "fruitsError": "میوه ها باید حداقل 2 عدد باشد",
-  "vegetablesError": "اقلام سبزیجات باید حداقل 2 عدد باشد"
+  "vegetablesError": "اقلام سبزیجات باید حداقل 2 عدد باشد",
+  "mealPlanCongrats": "تبریک برنامه های شما آماده است",
+  "editMealPlan": "برنامه غذایی خود را ویرایش کنید",
+  "month": "ماه",
+  "numberOfDays": "تعداد روزها",
+  "goal": "هدف",
+  "calories": "کالری",
+  "macros": "ماکروها",
+  "timeToCommit": "زمان تعهد",
+  "groceryList": "لیست خرید",
+  "days": "روز",
+  "vegetables": "سبزیجات",
+  "fruits": "میوه ها"
 }

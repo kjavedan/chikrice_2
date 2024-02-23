@@ -6,16 +6,10 @@
   </div>
 
   <!-- Header -->
-  <div class="md:mt-10">
-    <h1 class="mb-1 text-3xl">{{ $t('mealPlanGenerator') }} </h1>
-    <div class="underline text-[var(--ep-color-link)]">
-      {{ $t('whatMakesAGreatMealPlan') }}
-      <div :class="['i-flowbite:arrow-right-outline', { 'rotate-180': isRotate() }]"></div
-    ></div>
+  <MealPlanHeader title="mealPlanGenerator" link="whatMakesAGreatMealPlan" path="/" />
 
-    <div class="mt-8">
-      <h2>{{ $t('step') }} {{ step }}</h2>
-    </div>
+  <div class="mt-8">
+    <h2>{{ $t('step') }} {{ step }}</h2>
   </div>
 
   <!-- Step -->
@@ -51,7 +45,6 @@
 
 <script setup lang="ts">
 import { ref, markRaw, watch, computed } from 'vue'
-import { isRotate } from '@/utils/is'
 import { useRouter } from 'vue-router'
 
 import { ElButton } from 'element-plus'
@@ -69,7 +62,8 @@ import Step8 from './components/Step8.vue'
 import Step9 from './components/Step9.vue'
 import Step10 from './components/Step10.vue'
 
-import { UserInputsTypes, OptionsTypes, MacrosTypes } from './types/index'
+import type { UserInputsTypes, OptionsTypes, MacrosTypes } from './types'
+
 import { useStorage } from '@/hooks/web/useStorage'
 
 // USE HOOKS

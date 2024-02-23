@@ -23,9 +23,15 @@
         <div>
           <h6>Recommended</h6>
           <ul class="grid gap-1 text-sm mt-1">
-            <li class="protein"> {{ macrosRecommendation.proteins }}% {{ $t('proteins') }} </li>
-            <li class="carb">{{ macrosRecommendation.carbs }}% {{ $t('carbs') }}</li>
-            <li class="fat">{{ macrosRecommendation.fats }}% {{ $t('fats') }}</li>
+            <li class="text-[var(--ep-color-success)]"
+              >{{ macrosRecommendation.carbs }}% {{ $t('carbs') }}</li
+            >
+            <li class="text-[var(--ep-color-error)]">
+              {{ macrosRecommendation.proteins }}% {{ $t('proteins') }}
+            </li>
+            <li class="text-[var(--ep-color-warning)]"
+              >{{ macrosRecommendation.fats }}% {{ $t('fats') }}</li
+            >
           </ul>
         </div>
 
@@ -38,9 +44,15 @@
           <!-- Customized Macros -->
           <h6>Customized</h6>
           <ul class="grid gap-1 text-sm mt-1">
-            <li class="protein"> {{ userInputsData.macros.proteins }}% {{ $t('proteins') }} </li>
-            <li class="carb">{{ userInputsData.macros.carbs }}% {{ $t('carbs') }}</li>
-            <li class="fat">{{ userInputsData.macros.fats }}% {{ $t('fats') }}</li>
+            <li class="text-[var(--ep-color-success)]"
+              >{{ userInputsData.macros.carbs }}% {{ $t('carbs') }}</li
+            >
+            <li class="text-[var(--ep-color-error)]">
+              {{ userInputsData.macros.proteins }}% {{ $t('proteins') }}
+            </li>
+            <li class="text-[var(--ep-color-warning)]"
+              >{{ userInputsData.macros.fats }}% {{ $t('fats') }}</li
+            >
           </ul>
         </div>
       </div>

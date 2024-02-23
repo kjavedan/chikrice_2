@@ -97,5 +97,17 @@
   "proteinsError": "Protine items must be at least 2",
   "carbsError": "Carbs items must be at least 2",
   "fruitsError": "Fruits items must be at least 2",
-  "vegetablesError": "Vegetables items must be at least 2"
+  "vegetablesError": "Vegetables items must be at least 2",
+  "mealPlanCongrats": "Congratulations Your plans is ready",
+  "editMealPlan": "Edit your meal plan",
+  "month": "Month",
+  "numberOfDays": "Number of days",
+  "goal": "Goal",
+  "calories": "Calories",
+  "macros": "Macros",
+  "timeToCommit": "Time to commit",
+  "groceryList": "Grocery List",
+  "days": "Days",
+  "vegetables": "Vegetables",
+  "fruits": "Fruits"
 }
