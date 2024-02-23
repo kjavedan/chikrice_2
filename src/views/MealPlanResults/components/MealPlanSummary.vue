@@ -20,24 +20,27 @@
       <div class="flex flex-col gap-4">
         <div>
           <h5>{{ $t('calories') }}</h5>
-          <small class="mt-1">{{ data?.calories }} ⚡</small>
+          <small class="mt-1">{{ mealPlanSummary.calories }} ⚡</small>
         </div>
         <div>
           <h5>{{ $t('macros') }}</h5>
           <ul>
             <li>
               <small class="text-[var(--ep-color-success)]">
-                {{ data?.macros.carbs }} {{ $t('carbs') }}</small
+                %{{ data?.macros.carbs }} <ArrowRight /> {{ mealPlanSummary.macros.carb.amount
+                }}{{ $t('gram') }} {{ $t('carbs') }}</small
               >
             </li>
             <li>
               <small class="text-[var(--ep-color-error)]">
-                {{ data?.macros.proteins }} {{ $t('proteins') }}</small
+                %{{ data?.macros.proteins }} <ArrowRight /> {{ mealPlanSummary.macros.pro.amount
+                }}{{ $t('gram') }} {{ $t('proteins') }}</small
               >
             </li>
             <li>
               <small class="text-[var(--ep-color-warning)]">
-                {{ data?.macros.fats }} {{ $t('fats') }}</small
+                %{{ data?.macros.fats }} <ArrowRight /> {{ mealPlanSummary.macros.fat.amount
+                }}{{ $t('gram') }} {{ $t('fats') }}</small
               >
             </li>
           </ul>
@@ -49,9 +52,11 @@
 
 <script setup lang="ts">
 import type { UserInputsTypes } from '../../MealPlanGenerator/types'
+import type { MealPlanSummaryTypes } from '../types/index'
 
 interface PropsTypes {
   data: UserInputsTypes
+  mealPlanSummary: MealPlanSummaryTypes
 }
 defineProps<PropsTypes>()
 </script>

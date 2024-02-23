@@ -35,10 +35,7 @@
           </ul>
         </div>
 
-        <div
-          v-if="userInputsData.isMacrosCustomized"
-          class="i-octicon:arrow-right-16 w-2em h-2em"
-        ></div>
+        <ArrowRight v-if="userInputsData.isMacrosCustomized" />
 
         <div v-if="userInputsData.isMacrosCustomized">
           <!-- Customized Macros -->

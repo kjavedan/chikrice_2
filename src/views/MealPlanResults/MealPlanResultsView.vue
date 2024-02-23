@@ -3,10 +3,14 @@
     <MealPlanHeader title="mealPlanCongrats" link="editMealPlan" path="/" />
 
     <div class="mt-8 grid gap-8 md:grid-cols-2">
-      <MealPlanSummary :data="userInputsData" />
       <div>
-        <GroceryList :groceryList="groceryList" />
+        <MealPlanSummary :data="userInputsData" :mealPlanSummary="mealPlanSummary" />
+        <MealPlanResult
+          :macrosDetails="mealPlanSummary.macros"
+          :macrosRatio="userInputsData.macros"
+        />
       </div>
+      <GroceryList :groceryList="groceryList" />
     </div>
   </div>
 </template>
@@ -21,6 +25,7 @@ import { useStorage } from '@/hooks/web/useStorage'
 
 import GroceryList from './components/GroceryList.vue'
 import MealPlanSummary from './components/MealPlanSummary.vue'
+import MealPlanResult from './components/MealPlanResult.vue'
 
 import { addCarbs } from './utils/addCarbs'
 import { processWeight } from './utils/common'
@@ -37,7 +42,14 @@ const groceryList = ref<GroceryListTypes>({
 
 const { getStorage } = useStorage()
 
-const mealPlanSummary = ref<MealPlanSummaryTypes>()
+const mealPlanSummary = ref<MealPlanSummaryTypes>({
+  macros: {
+    pro: { amount: 0, calories: 0 },
+    fat: { amount: 0, calories: 0 },
+    carb: { amount: 0, calories: 0 }
+  },
+  calories: 0
+})
 
 const availableMacros = ref<AvailableMacrosTypes>()
 

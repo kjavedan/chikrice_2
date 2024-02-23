@@ -7,7 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ArrowRight: (typeof import('./../src/components/ArrowIcon/src/ArrowRight.vue'))['default']
     BmrCalculator: (typeof import('./../src/components/BmrCalculator/src/BmrCalculator.vue'))['default']
+    Draggable: (typeof import('./../src/components/Draggable/src/Draggable.vue'))['default']
+    DraggableDay: (typeof import('./../src/components/Draggable/src/DraggableDay.vue'))['default']
+    DraggableItems: (typeof import('./../src/components/Draggable/src/DraggableItems.vue'))['default']
     ElConfigProvider: (typeof import('element-plus/es'))['ElConfigProvider']
     ElDrawer: (typeof import('element-plus/es'))['ElDrawer']
     ElRow: (typeof import('element-plus/es'))['ElRow']
