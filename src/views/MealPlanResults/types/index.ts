@@ -1,9 +1,6 @@
 interface FoodItemTypes {
   icon: string
   value: string
-  isRaw: boolean
-  rawWeight: string
-  cookedWeight: string
 }
 
 export interface AvailableMacrosTypes {
@@ -34,4 +31,11 @@ export interface GroceryListTypes {
   fruits: FoodItemTypes[]
   proteins: FoodItemTypes[]
   vegetables: FoodItemTypes[]
+}
+
+export interface MealTemplateTypes {
+  type: 'meal' | 'snack'
+  calories: number
+  macros: MacrosDetailTypes
+  items: FoodItemTypes[]
 }

@@ -4,7 +4,6 @@
     <div>
       <h5>{{ $t('mealsNumber') }}</h5>
       <ElRadioGroup v-model="userInputsData.mealsNumber">
-        <ElRadio label="1" />
         <ElRadio label="2" />
         <ElRadio label="3" />
         <ElRadio label="4" />
@@ -13,7 +12,7 @@
 
     <div class="mt-8">
       <h5>{{ $t('snacksNumber') }}</h5>
-      <ElRadioGroup v-model="userInputsData.snackNumber">
+      <ElRadioGroup v-model="userInputsData.snacksNumber">
         <ElRadio label="1" />
         <ElRadio label="2" />
       </ElRadioGroup>

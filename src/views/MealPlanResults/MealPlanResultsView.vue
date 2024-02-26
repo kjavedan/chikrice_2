@@ -4,7 +4,11 @@
 
     <div class="mt-8 grid gap-8 md:grid-cols-2">
       <div>
-        <MealPlanSummary :data="userInputsData" :mealPlanSummary="mealPlanSummary" />
+        <MealPlanSummary
+          :data="userInputsData"
+          :mealPlanSummary="mealPlanSummary"
+          :isIncludeSweet="isIncludeSweet"
+        />
         <MealPlanResult
           :macrosDetails="mealPlanSummary.macros"
           :macrosRatio="userInputsData.macros"
@@ -18,41 +22,23 @@
 <script setup lang="ts">
 import { ref, onBeforeMount } from 'vue'
 
+import type { GroceryListTypes, MealPlanSummaryTypes } from './types'
 import type { UserInputsTypes } from '../MealPlanGenerator/types/index'
-import type { GroceryListTypes, AvailableMacrosTypes, MealPlanSummaryTypes } from './types'
 
 import { useStorage } from '@/hooks/web/useStorage'
 
 import GroceryList from './components/GroceryList.vue'
-import MealPlanSummary from './components/MealPlanSummary.vue'
 import MealPlanResult from './components/MealPlanResult.vue'
+import MealPlanSummary from './components/MealPlanSummary.vue'
 
-import { addCarbs } from './utils/addCarbs'
-import { processWeight } from './utils/common'
-import { addProteins } from './utils/addProteins'
+import { generateGroceryList } from './utils/GenerateGroceryList'
 import { calculatePlanSummary } from './utils/calculatePlanSummary'
+import { defineMealPlanStructure } from './utils/mealPlanStructure'
 
-const groceryList = ref<GroceryListTypes>({
-  fats: [],
-  carbs: [],
-  fruits: [],
-  proteins: [],
-  vegetables: []
-})
-
+// LOCAL HOOKS
 const { getStorage } = useStorage()
 
-const mealPlanSummary = ref<MealPlanSummaryTypes>({
-  macros: {
-    pro: { amount: 0, calories: 0 },
-    fat: { amount: 0, calories: 0 },
-    carb: { amount: 0, calories: 0 }
-  },
-  calories: 0
-})
-
-const availableMacros = ref<AvailableMacrosTypes>()
-
+// REFS
 const userInputsData = ref<UserInputsTypes>(getStorage('meal-plan-generator') || {})
 
 const {
@@ -63,62 +49,73 @@ const {
   calories: userCalories,
   proteins: userProteinsList,
   vegetables: userVegetablesList,
+  mealsNumber,
+  snacksNumber,
+  isIncludeSweet,
   goalAchievementSpeed
 } = userInputsData.value
 
+const groceryList = ref<GroceryListTypes>({
+  fats: [],
+  carbs: [],
+  fruits: [],
+  proteins: [],
+  vegetables: []
+})
+
+const mealPlanSummary = ref<MealPlanSummaryTypes>({
+  macros: {
+    pro: { amount: 0, calories: 0 },
+    fat: { amount: 0, calories: 0 },
+    carb: { amount: 0, calories: 0 }
+  },
+  calories: 0
+})
+
+const mealPlanData = ref({})
+
 //FUNCS
 const generateMealPlan = () => {
-  //STEP 2 (CALCULATE THE MACROS & CALORIES)
+  //STEP 1 Calculate macros & calories
   const { macros, calories } = calculatePlanSummary(
     userGoal,
+    userMacros,
     userCalories,
-    goalAchievementSpeed,
-    userMacros
+    isIncludeSweet,
+    goalAchievementSpeed
   )
-
   mealPlanSummary.value = { macros, calories }
 
-  availableMacros.value = {
-    pro: macros.pro.amount,
-    carbs: macros.carb.amount,
-    fat: macros.fat.amount
-  }
-
-  //STEP 3(ADD THE CARBS)
-  const carbsGroccery = addCarbs(
-    userGoal,
-    mealPlanSummary.value.macros,
+  // STEP 2 Generate grocery list
+  const { carbsGrocery, fruitsGrocery, vegetablesGrocery, proteinsGrocery } = generateGroceryList(
     userCarbsList,
     userFruitsList,
-    userVegetablesList,
-    availableMacros.value
+    userProteinsList,
+    userVegetablesList
   )
-
-  //STEP 4 (ADD THE PROTEINS)
-  const proteinsGroccery = addProteins(userGoal, userProteinsList, availableMacros.value)
-
-  //STEP 5 (ADD THE FATS)
-  const fatsGroccery = [
-    {
-      value: 'oil',
-      icon: '🫒🌻',
-      isRaw: true,
-      rawWeight: processWeight(availableMacros.value.fat, {}),
-      cookedWeight: processWeight(availableMacros.value.fat, {
-        isCount: true,
-        countLabel: 'table spon',
-        countWeight: 15
-      })
-    }
-  ]
-
   groceryList.value = {
-    ...carbsGroccery,
-    proteins: proteinsGroccery,
-    fats: fatsGroccery
+    fats: [{ value: 'oil', icon: '🌻' }],
+    carbs: carbsGrocery,
+    fruits: fruitsGrocery,
+    proteins: proteinsGrocery,
+    vegetables: vegetablesGrocery
   }
+
+  // STEP 3 Create the plan structure & Details
+  const structure = defineMealPlanStructure(
+    userCarbsList,
+    userProteinsList,
+    mealsNumber,
+    snacksNumber,
+    mealPlanSummary.value
+  )
+  console.log('🚀 ~ generateMealPlan ~ structure:', structure)
+
+  // STEP 4 Generate the meal plan
+  mealPlanData.value = structure
 }
 
+// VUE HOOKS
 onBeforeMount(() => {
   const storedData = getStorage('meal-plan-generator')
 

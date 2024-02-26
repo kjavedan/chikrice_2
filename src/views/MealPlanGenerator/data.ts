@@ -141,7 +141,6 @@ const proteinsOptions = [
   { icon: '🐟', value: 'fish' },
   { icon: '🥚', value: 'eggs' },
   { icon: '🦃', value: 'turkey' },
-  { icon: '🍳', value: 'eggWhite' },
   { icon: '🐔', value: 'chicken' },
   { icon: '🥩', value: 'flankSteak' },
   { icon: '🧋', value: 'proteinWhey' },

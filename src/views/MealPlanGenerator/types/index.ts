@@ -1,10 +1,10 @@
 export interface UserInputsTypes {
-  snackNumber: string
   mealsNumber: string
+  snacksNumber: string
   budget: 'enough' | 'low'
   calories: number
   goalAchievementSpeed: 'slow' | 'moderate' | 'fast'
-  includeSweet: 'no' | 'yes'
+  isIncludeSweet: 'no' | 'yes'
   goal: 'loseWeight' | 'gainWeight' | 'optimzePerformance'
   fats: string[]
   macros: MacrosTypes

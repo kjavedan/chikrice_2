@@ -1,8 +1,9 @@
 export const calculatePlanSummary = (
   goal: string,
+  macros: { proteins: number; carbs: number; fats: number },
   calories: number,
-  speed: string,
-  macros: { proteins: number; carbs: number; fats: number }
+  isIncludeSweet: string,
+  speed: string
 ) => {
   const caloriesList = {
     slow: 200,
@@ -11,14 +12,15 @@ export const calculatePlanSummary = (
   }
 
   let processedCalories: number
+  const sweetCalories = isIncludeSweet ? 100 : 0
 
   // CALC CALORIES
   if (goal === 'loseWeight') {
-    processedCalories = calories - caloriesList[speed]
+    processedCalories = calories - caloriesList[speed] - sweetCalories
   } else if (goal === 'gainWeight') {
-    processedCalories = calories + caloriesList[speed]
+    processedCalories = calories + caloriesList[speed] - sweetCalories
   } else {
-    processedCalories = calories
+    processedCalories = calories - sweetCalories
   }
 
   // CALC MACROS

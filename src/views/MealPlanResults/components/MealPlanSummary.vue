@@ -1,6 +1,6 @@
 <template>
   <div class="max-w-120">
-    <div class="grid grid-cols-2 gap-8 md:gap-16 p-8 bg-[var(--ep-color-card)] rounded-lg">
+    <div class="grid grid-cols-2 gap-4 md:gap-16 p-4 md:p-8 bg-[var(--ep-color-card)] rounded-lg">
       <!-- COL 1 -->
       <div class="flex flex-col gap-4">
         <div>
@@ -20,7 +20,10 @@
       <div class="flex flex-col gap-4">
         <div>
           <h5>{{ $t('calories') }}</h5>
-          <small class="mt-1">{{ mealPlanSummary.calories }} ⚡</small>
+          <small class="mt-1">⚡{{ mealPlanSummary.calories }} main calories </small>
+          <small class="block">
+            {{ isIncludeSweet === 'yes' ? '🍫100 cheat allowence' : '' }}
+          </small>
         </div>
         <div>
           <h5>{{ $t('macros') }}</h5>
@@ -57,6 +60,7 @@ import type { MealPlanSummaryTypes } from '../types/index'
 interface PropsTypes {
   data: UserInputsTypes
   mealPlanSummary: MealPlanSummaryTypes
+  isIncludeSweet: string
 }
 defineProps<PropsTypes>()
 </script>

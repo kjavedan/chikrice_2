@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderLink :question="stepData.question" :link="stepData.questionLink" />
-    <ElRadioGroup v-model="userInputsData.includeSweet">
+    <ElRadioGroup v-model="userInputsData.isIncludeSweet">
       <ElRadio label="no">
         <span>{{ $t('no') }}</span>
       </ElRadio>
