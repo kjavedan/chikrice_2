@@ -31,9 +31,10 @@ import GroceryList from './components/GroceryList.vue'
 import MealPlanResult from './components/MealPlanResult.vue'
 import MealPlanSummary from './components/MealPlanSummary.vue'
 
-import { generateGroceryList } from './utils/GenerateGroceryList'
-import { calculatePlanSummary } from './utils/calculatePlanSummary'
-import { defineMealPlanStructure } from './utils/mealPlanStructure'
+import { generateGroceryList } from './utils/generateGroceryList'
+import { generateMealPlanSummary } from './utils/generateMealPlanSummary'
+import { generateMealPlanStructure } from './utils/generateMealPlanStructure'
+import { populateMealPlanStructure } from './utils/populateMealPlanStructure'
 
 // LOCAL HOOKS
 const { getStorage } = useStorage()
@@ -73,11 +74,12 @@ const mealPlanSummary = ref<MealPlanSummaryTypes>({
 })
 
 const mealPlanData = ref({})
+console.log('🚀 ~ mealPlanData:', mealPlanData)
 
 //FUNCS
 const generateMealPlan = () => {
   //STEP 1 Calculate macros & calories
-  const { macros, calories } = calculatePlanSummary(
+  const { macros, calories } = generateMealPlanSummary(
     userGoal,
     userMacros,
     userCalories,
@@ -102,17 +104,17 @@ const generateMealPlan = () => {
   }
 
   // STEP 3 Create the plan structure & Details
-  const structure = defineMealPlanStructure(
+  const structure = generateMealPlanStructure(
     userCarbsList,
     userProteinsList,
     mealsNumber,
     snacksNumber,
     mealPlanSummary.value
   )
-  console.log('🚀 ~ generateMealPlan ~ structure:', structure)
 
-  // STEP 4 Generate the meal plan
-  mealPlanData.value = structure
+  // STEP 4 Fill the streucture with data
+  const populatedPlan = populateMealPlanStructure(structure)
+  console.log('🚀 ~ populatedPlan:', populatedPlan)
 }
 
 // VUE HOOKS
@@ -128,3 +130,5 @@ onBeforeMount(() => {
 </script>
 
 <style scoped></style>
+./utils/defineMealPlanStructure ./utils/generateGroceryList ./utils/generateMealPlanSummary
+./utils/generateMealPlanStructure

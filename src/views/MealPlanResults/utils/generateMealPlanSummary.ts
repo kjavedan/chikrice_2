@@ -1,4 +1,4 @@
-export const calculatePlanSummary = (
+export const generateMealPlanSummary = (
   goal: string,
   macros: { proteins: number; carbs: number; fats: number },
   calories: number,

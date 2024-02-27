@@ -1,6 +1,6 @@
 import { MealPlanSummaryTypes } from '../types'
 
-export const defineMealPlanStructure = (
+export const generateMealPlanStructure = (
   carbsList: string[],
   proteinsList: string[],
   mealsNumber: string,
