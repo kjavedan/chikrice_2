@@ -7,17 +7,17 @@ export const generateMealPlanStructure = (
   snacksNumber: string,
   mealPlanSummary: MealPlanSummaryTypes
 ) => {
-  const splitMacrosEqually = (numberOfMeals: number, type: 'meal' | 'snack') => {
+  const splitMacrosEqually = (numberOfMealsOrSnacks: number, type: 'meal' | 'snack') => {
     const { macros, calories } = mealPlanSummary
     const macroPercentage = type === 'meal' ? 0.75 : 0.25
 
     const unitMacros = {
-      pro: (macros.pro.amount * macroPercentage) / numberOfMeals,
-      carb: (macros.carb.amount * macroPercentage) / numberOfMeals,
-      fat: (macros.fat.amount * macroPercentage) / numberOfMeals
+      pro: (macros.pro.amount * macroPercentage) / numberOfMealsOrSnacks,
+      carb: (macros.carb.amount * macroPercentage) / numberOfMealsOrSnacks,
+      fat: (macros.fat.amount * macroPercentage) / numberOfMealsOrSnacks
     }
 
-    const unitCalories = (calories * macroPercentage) / numberOfMeals
+    const unitCalories = (calories * macroPercentage) / numberOfMealsOrSnacks
 
     return { calories: unitCalories, macros: unitMacros }
   }
