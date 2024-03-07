@@ -41,6 +41,9 @@
       $t('next')
     }}</ElButton>
   </div>
+
+  <!-- FAST NAVIGATION -->
+  <StepsNavigator :step="step" :steps="stepNavigationData" :goTo="handleGoToStep" />
 </template>
 
 <script setup lang="ts">
@@ -65,6 +68,7 @@ import Step10 from './components/Step10.vue'
 import type { UserInputsTypes, OptionsTypes, MacrosTypes } from './types'
 
 import { useStorage } from '@/hooks/web/useStorage'
+import { StepType } from '@/components/StepsNavigator/src/types/index'
 
 // USE HOOKS
 const { getStorage, setStorage } = useStorage()
@@ -74,6 +78,19 @@ const router = useRouter()
 
 // REFS
 const step = ref(getStorage('meal-plan-step') || 1)
+
+const stepNavigationData = ref<StepType[]>([
+  { label: '🏋️', value: 1 },
+  { label: '🐌', value: 2 },
+  { label: '📱', value: 3 },
+  { label: '💵', value: 4 },
+  { label: '🥩', value: 5 },
+  { label: '🍚', value: 6 },
+  { label: '🍌', value: 7 },
+  { label: '🥦', value: 8 },
+  { label: '🔢', value: 9 },
+  { label: '🍫', value: 10 }
+])
 
 const stepsData = ref(stepsConfig)
 
@@ -86,12 +103,12 @@ const macrosRecommendation = ref<MacrosTypes>({
 })
 
 const defaultInputsData = {
-  snackNumber: '1',
+  snacksNumber: '1',
   mealsNumber: '3',
   calories: 2000,
   budget: 'enough',
   goalAchievementSpeed: 'moderate',
-  includeSweet: 'no',
+  isIncludeSweet: 'no',
   goal: 'loseWeight',
   fats: ['oliveOil', 'regularOil'],
   macros: {
@@ -141,6 +158,13 @@ const onBack = () => {
   if (step.value > 1) {
     window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
     step.value--
+  }
+}
+
+const handleGoToStep = (index: number) => {
+  if (index && index > 0 && index < 11) {
+    step.value = +index
+    window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
   }
 }
 

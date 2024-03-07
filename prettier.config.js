@@ -5,15 +5,15 @@ module.exports = {
   semi: false,
   vueIndentScriptAndStyle: false,
   singleQuote: true,
-  quoteProps: "as-needed",
+  quoteProps: 'as-needed',
   bracketSpacing: true,
-  trailingComma: "none",
+  trailingComma: 'none',
   jsxSingleQuote: false,
-  arrowParens: "always",
+  arrowParens: 'always',
   insertPragma: false,
   requirePragma: false,
-  proseWrap: "never",
-  htmlWhitespaceSensitivity: "strict",
-  endOfLine: "auto",
-  rangeStart: 0,
-};
+  proseWrap: 'never',
+  htmlWhitespaceSensitivity: 'strict',
+  endOfLine: 'auto',
+  rangeStart: 0
+}

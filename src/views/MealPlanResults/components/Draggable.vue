@@ -1,3 +1,4 @@
+``
 <template>
   <div>
     <draggable v-model="mealPlanData" item-key="id" handle=".handle-meal">
@@ -27,7 +28,7 @@
             <template #item="{ element }">
               <div class="flex gap-2 items-center mb-1 py-1">
                 <div class="i-ic:outline-drag-indicator cursor-move handle-food icon"></div>
-                <div> {{ element.icon }} {{ element.value }} </div>
+                <div> {{ element.icon }} {{ $t(element.value) }} </div>
               </div>
             </template>
           </draggable>

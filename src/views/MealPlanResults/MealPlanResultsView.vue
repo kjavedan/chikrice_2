@@ -12,6 +12,7 @@
         <MealPlanResult
           :macrosDetails="mealPlanSummary.macros"
           :macrosRatio="userInputsData.macros"
+          :mealPlanData="mealPlanData"
         />
       </div>
       <GroceryList :groceryList="groceryList" />
@@ -113,8 +114,13 @@ const generateMealPlan = () => {
   )
 
   // STEP 4 Fill the streucture with data
-  const populatedPlan = populateMealPlanStructure(structure, groceryList.value)
-  console.log('🚀 ~ populatedPlan:', populatedPlan)
+  const populatedPlan = populateMealPlanStructure(
+    structure,
+    userCarbsList,
+    userFruitsList,
+    userProteinsList
+  )
+  mealPlanData.value = populatedPlan
 }
 
 // VUE HOOKS

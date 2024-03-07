@@ -3,7 +3,7 @@ export default {
   limit: null,
   unit: 'gram',
   value: 'proteinWhey',
-  label: '🧋 Protein Whey',
+  icon: '🧋',
   portionWeight: 100,
   priority: { loseWeight: 3, gainWeight: 2, optimizePerformance: 2 },
   foodBoxType: 'single',

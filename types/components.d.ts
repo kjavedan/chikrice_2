@@ -22,6 +22,7 @@ declare module 'vue' {
     RouterView: (typeof import('vue-router'))['RouterView']
     Sidebar: (typeof import('./../src/components/Sidebar/src/Sidebar.vue'))['default']
     StepError: (typeof import('./../src/components/StepError/src/StepError.vue'))['default']
+    StepsNavigator: (typeof import('./../src/components/StepsNavigator/src/StepsNavigator.vue'))['default']
     ThemeSwitch: (typeof import('./../src/components/ThemeSwitch/src/ThemeSwitch.vue'))['default']
   }
 }
