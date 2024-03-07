@@ -17,6 +17,7 @@
       </div>
       <GroceryList :groceryList="groceryList" />
     </div>
+    <button @click="generateMealPlan">refresh</button>
   </div>
 </template>
 
@@ -75,6 +76,7 @@ const mealPlanSummary = ref<MealPlanSummaryTypes>({
 })
 
 const mealPlanData = ref({})
+
 console.log('🚀 ~ mealPlanData:', mealPlanData)
 
 //FUNCS

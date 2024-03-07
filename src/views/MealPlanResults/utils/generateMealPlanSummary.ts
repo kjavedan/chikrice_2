@@ -12,15 +12,15 @@ export const generateMealPlanSummary = (
   }
 
   let processedCalories: number
-  const sweetCalories = isIncludeSweet ? 100 : 0
+  const sweetCalories = isIncludeSweet === 'yes' ? 100 : 0
 
   // CALC CALORIES
   if (goal === 'loseWeight') {
-    processedCalories = calories - caloriesList[speed] - sweetCalories
+    processedCalories = +calories - caloriesList[speed] - sweetCalories
   } else if (goal === 'gainWeight') {
-    processedCalories = calories + caloriesList[speed] - sweetCalories
+    processedCalories = +calories + caloriesList[speed] - sweetCalories
   } else {
-    processedCalories = calories - sweetCalories
+    processedCalories = +calories - sweetCalories
   }
 
   // CALC MACROS

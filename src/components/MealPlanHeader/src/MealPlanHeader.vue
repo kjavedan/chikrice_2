@@ -1,7 +1,10 @@
 <template>
   <div class="md:mt-10">
     <h1 class="mb-1 text-3xl">{{ $t(title) }} </h1>
-    <div class="underline text-[var(--ep-color-link)]">
+    <div
+      @click="$router.push({ name: 'mealPlanGenerator' })"
+      class="underline text-[var(--ep-color-link)] cursor-pointer"
+    >
       {{ $t(link) }}
       <ArrowRight />
     </div>

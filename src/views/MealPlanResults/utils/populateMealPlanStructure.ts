@@ -56,6 +56,11 @@ export const populateMealPlanStructure = (
           : proteinsItems[Math.floor(Math.random() * proteinsItems.length)]
 
       meal.items = [...meal.items, ProteinsBank[selectedProtein]]
+    } else {
+      const isProteinWhey = proteinsItems.find((pro) => pro.value === 'proteinWhey')
+      if (isProteinWhey) {
+        meal.items = [...meal.items, ProteinsBank.proteinWhey]
+      }
     }
   }
 
