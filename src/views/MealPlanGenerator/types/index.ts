@@ -43,4 +43,5 @@ export interface PropsTypes {
   userInputsData: UserInputsTypes
   macrosRecommendation: MacrosTypes
   onUpdate: (key: string, value: any) => void
+  onNext: () => void
 }

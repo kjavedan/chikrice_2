@@ -31,7 +31,8 @@ interface PropsTypes {
   macrosRatio: MacrosTypes
   mealPlanData: any
 }
-defineProps<PropsTypes>()
+const props = defineProps<PropsTypes>()
+console.log(props)
 </script>
 
 <style scoped></style>

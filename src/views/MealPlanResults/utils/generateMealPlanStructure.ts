@@ -12,9 +12,9 @@ export const generateMealPlanStructure = (
     const macroPercentage = type === 'meal' ? 0.75 : 0.25
 
     const unitMacros = {
-      pro: (macros.pro.amount * macroPercentage) / numberOfMealsOrSnacks,
-      carb: (macros.carb.amount * macroPercentage) / numberOfMealsOrSnacks,
-      fat: (macros.fat.amount * macroPercentage) / numberOfMealsOrSnacks
+      pro: Math.round((macros.pro.amount * macroPercentage) / numberOfMealsOrSnacks),
+      carb: Math.round((macros.carb.amount * macroPercentage) / numberOfMealsOrSnacks),
+      fat: Math.round((macros.fat.amount * macroPercentage) / numberOfMealsOrSnacks)
     }
 
     const unitCalories = (calories * macroPercentage) / numberOfMealsOrSnacks
@@ -25,12 +25,14 @@ export const generateMealPlanStructure = (
   const mealTemplate = {
     type: 'meal',
     ...splitMacrosEqually(+mealsNumber, 'meal'),
+    dynamicMacros: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 
   const snackTemplate = {
     type: 'snack',
     ...splitMacrosEqually(+snacksNumber, 'snack'),
+    dynamicMacros: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 
@@ -63,7 +65,7 @@ export const generateMealPlanStructure = (
     const data: any = {} // Initialize data with an empty object
 
     for (let i = 1; i <= numberOfDays; i++) {
-      data[i] = [...populateDailyMeals(), ...populateDailySnacks()]
+      data[i] = { id: i, data: [...populateDailyMeals(), ...populateDailySnacks()] }
     }
 
     return data

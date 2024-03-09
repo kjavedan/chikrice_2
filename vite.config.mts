@@ -74,7 +74,6 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       }),
       EslintPlugin({
         cache: false,
-        fix: true,
         include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.tsx']
       })
     ],

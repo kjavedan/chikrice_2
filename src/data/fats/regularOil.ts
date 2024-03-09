@@ -1,8 +1,8 @@
 // REGULAR OIL
 export default {
   unit: 'gram',
-  value: 'regularOil',
-  label: '🌻 Regular Oil',
+  value: 'oil',
+  icon: '🌻',
   portionWeight: 100,
   mealOrderPriority: null,
 

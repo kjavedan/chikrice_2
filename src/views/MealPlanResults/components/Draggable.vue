@@ -1,14 +1,15 @@
-``
 <template>
   <div>
-    <draggable v-model="mealPlanData" item-key="id" handle=".handle-meal">
+    <draggable v-model="mealPlanData.data" item-key="id" handle=".handle-meal">
       <template #item="{ index }">
         <div class="mb-8">
           <div class="flex justify-between items-center">
             <p
               class="py-1.5 px-4 bg-[var(--ep-color-card)] rounded-md w-fit mt-6 font-bold whitespace-nowrap"
-              >{{ $t('meal') }} {{ index + 1 }}</p
             >
+              {{ $t('meal') + ' ' + (index + 1) }}
+            </p>
+
             <!-- Actions -->
             <div class="flex gap-3 cursor-pointer">
               <div
@@ -16,10 +17,10 @@
               ></div>
             </div>
           </div>
-          <MacrosInfo :macrosDetails="macrosDetails" :macrosRatio="macrosRatio" />
+          <MacrosInfo :mealData="mealPlanData.data[index]" :macrosRatio="macrosRatio" />
 
           <draggable
-            v-model="mealPlanData[index].items"
+            v-model="mealPlanData.data[index].items"
             handle=".handle-food"
             group="people"
             class="mt-2"
@@ -29,6 +30,7 @@
               <div class="flex gap-2 items-center mb-1 py-1">
                 <div class="i-ic:outline-drag-indicator cursor-move handle-food icon"></div>
                 <div> {{ element.icon }} {{ $t(element.value) }} </div>
+                <small class="color-gray"> ~ {{ element.weight }}</small>
               </div>
             </template>
           </draggable>
@@ -53,6 +55,7 @@ interface PropsTypes {
   mealPlanData: any
 }
 const props = defineProps<PropsTypes>()
+console.log('🚀 ~ props:', props)
 
 const { mealPlanData } = toRefs(props)
 </script>

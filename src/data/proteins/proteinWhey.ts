@@ -4,7 +4,7 @@ export default {
   unit: 'gram',
   value: 'proteinWhey',
   icon: '🧋',
-  portionWeight: 100,
+  portionWeight: 30,
   priority: { loseWeight: 3, gainWeight: 2, optimizePerformance: 2 },
   foodBoxType: 'single',
 

@@ -2,21 +2,13 @@
   <div class="mb-2 mt-3">
     <!-- Macros -->
     <div class="w-[90%] max-w-80 flex items-end gap-2">
-      <HorizontalMacroBar
-        name="carbs"
-        :amount="macrosDetails.carb.amount"
-        :width="macrosRatio.carbs"
-      />
+      <HorizontalMacroBar name="carbs" :amount="mealData.macros.carb" :width="macrosRatio.carbs" />
       <HorizontalMacroBar
         name="proteins"
-        :amount="macrosDetails.pro.amount"
+        :amount="mealData.macros.pro"
         :width="macrosRatio.proteins"
       />
-      <HorizontalMacroBar
-        name="fats"
-        :amount="macrosDetails.fat.amount"
-        :width="macrosRatio.fats"
-      />
+      <HorizontalMacroBar name="fats" :amount="mealData.macros.fat" :width="macrosRatio.fats" />
     </div>
   </div>
 </template>
@@ -24,14 +16,14 @@
 <script setup lang="ts">
 import HorizontalMacroBar from './HorizontalMacroBar.vue'
 
-import type { MacrosDetailTypes } from '../types'
 import type { MacrosTypes } from '../../MealPlanGenerator/types/index'
 
 interface PropsTypes {
-  macrosDetails: MacrosDetailTypes
+  mealData: any
   macrosRatio: MacrosTypes
 }
-defineProps<PropsTypes>()
+const props = defineProps<PropsTypes>()
+console.log('🚀 ~ props:', props)
 </script>
 
 <style scoped></style>

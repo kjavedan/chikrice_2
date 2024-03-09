@@ -20,6 +20,7 @@
       :macrosRecommendation="macrosRecommendation"
       :userInputsData="userInputsData"
       :onUpdate="onUpdateUserInputs"
+      :onNext="onNext"
       :optionsData="optionsData"
       :stepError="stepError"
       :stepData="item"
