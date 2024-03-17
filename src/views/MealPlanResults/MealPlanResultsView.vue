@@ -77,8 +77,6 @@ const mealPlanSummary = ref<MealPlanSummaryTypes>({
 
 const mealPlanData = ref({})
 
-console.log('🚀 ~ mealPlanData:', mealPlanData)
-
 //FUNCS
 const generateMealPlan = () => {
   //STEP 1 Calculate macros & calories

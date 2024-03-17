@@ -59,11 +59,16 @@ export const populateMealPlanStructure = (
     if (meal.type === 'meal') {
       meal.items = [
         ...meal.items,
-        { ...regularOil, weight: 'only if necessary(minimum)' },
-        { value: 'mixedVegis', icon: '🥒🍅🥬', weight: 'eat as you wish' }
+        { ...regularOil },
+        {
+          value: 'mixedVegis',
+          icon: '🥒🍅🥬',
+          weight: 'eat as you wish',
+          macros: { pro: 0, carb: 0, fat: 0 }
+        }
       ]
     }
-    calculateFatMacro(meal)
+    calculateFatMacro(regularOil, meal.macros)
   }
 
   const addMealFood = (
@@ -123,9 +128,22 @@ export const populateMealPlanStructure = (
     item.macros.pro += +availableProtein
     item.macros.fat += Math.round((item.nutrientFacts.fat / item.portionWeight) * foodWeight)
   }
-  const calculateFatMacro = (meal) => {
-    console.log(meal)
+
+  const calculateFatMacro = (item, macros) => {
+    item.weight = 0
+    item.macros = { carb: 0, pro: 0, fat: 0 }
+
+    const availableFat = macros.fat - item.macros.fat
+    if (availableFat < 0) {
+      item.macros.fat = 0
+      return
+    }
+    const foodWeight = (availableFat / item.nutrientFacts.fat) * item.portionWeight
+
+    item.weight = Math.round(foodWeight) + 'g'
+    item.macros.fat = Math.round((item.nutrientFacts.fat / item.portionWeight) * foodWeight)
   }
+
   // Function to populate meals for a day
   const populateMeals = (key, day) => {
     day.forEach((meal, index) => {

@@ -3,7 +3,7 @@ export default {
   limit: null,
   unit: 'gram',
   value: 'eggWhite',
-  label: '🍳 Egg White',
+  icon: '🍳',
   portionWeight: 100,
   priority: { loseWeight: 4, gainWeight: 2, optimizePerformance: 3 },
   foodBoxType: 'single',
