@@ -9,7 +9,11 @@ export const generateMealPlanStructure = (
 ) => {
   const splitMacrosEqually = (numberOfMealsOrSnacks: number, type: 'meal' | 'snack') => {
     const { macros, calories } = mealPlanSummary
-    const macroPercentage = type === 'meal' ? 0.75 : 0.25
+
+    const isMeal = type === 'meal'
+    const isTwoItems = numberOfMealsOrSnacks === 2
+
+    const macroPercentage = isTwoItems ? (isMeal ? 0.75 : 0.25) : isMeal ? 0.875 : 0.125
 
     const unitMacros = {
       pro: Math.round((macros.pro.amount * macroPercentage) / numberOfMealsOrSnacks),
@@ -25,14 +29,12 @@ export const generateMealPlanStructure = (
   const mealTemplate = {
     type: 'meal',
     ...splitMacrosEqually(+mealsNumber, 'meal'),
-    dynamicMacros: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 
   const snackTemplate = {
     type: 'snack',
     ...splitMacrosEqually(+snacksNumber, 'snack'),
-    dynamicMacros: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 
