@@ -171,12 +171,13 @@ export const populateMealPlanStructure = (
     const availableFat = macrosLimit.fat - macrosFilled.fat
     if (availableFat < 0) {
       item.calculatedItemMacros.fat = 0
-      return
+      return 0
     }
     const foodWeight = (availableFat / fat) * portionWeight
 
     item.weight = Math.round(foodWeight) + 'g'
     item.calculatedItemMacros.fat = Math.round((fat / portionWeight) * foodWeight)
+    macrosFilled.fat = item.calculatedItemMacros.fat
   }
 
   // Function to populate meals for a day
