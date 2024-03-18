@@ -13,5 +13,5 @@ export default {
     carbs: 0,
     fat: 100
   },
-  calculatedMacros: { carb: 0, pro: 0, fat: 0 }
+  calculatedItemMacros: { carb: 0, pro: 0, fat: 0 }
 }

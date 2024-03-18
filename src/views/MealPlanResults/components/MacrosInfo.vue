@@ -30,9 +30,9 @@ const { mealData } = toRefs(props)
 const macros = computed(() => {
   const data = { pro: 0, carb: 0, fat: 0 }
   mealData.value.items.forEach((item) => {
-    data.carb += item.calculatedMacros?.carb
-    data.pro += item.calculatedMacros?.pro
-    data.fat += item.calculatedMacros?.fat
+    data.carb += item.calculatedItemMacros?.carb
+    data.pro += item.calculatedItemMacros?.pro
+    data.fat += item.calculatedItemMacros?.fat
   })
   return data
 })

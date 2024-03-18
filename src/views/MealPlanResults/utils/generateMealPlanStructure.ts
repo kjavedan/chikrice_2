@@ -23,18 +23,20 @@ export const generateMealPlanStructure = (
 
     const unitCalories = (calories * macroPercentage) / numberOfMealsOrSnacks
 
-    return { calories: unitCalories, macros: unitMacros }
+    return { calories: unitCalories, macrosLimit: unitMacros }
   }
 
   const mealTemplate = {
     type: 'meal',
     ...splitMacrosEqually(+mealsNumber, 'meal'),
+    macrosFilled: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 
   const snackTemplate = {
     type: 'snack',
     ...splitMacrosEqually(+snacksNumber, 'snack'),
+    macrosFilled: { pro: 0, carb: 0, fat: 0 },
     items: []
   }
 

@@ -28,7 +28,7 @@ export const populateMealPlanStructure = (
       // snack
       const selectedSnack = fruitsItems[Math.floor(Math.random() * fruitsItems.length)]
       meal.items = [...meal.items, selectedSnack]
-      calculateCarbMacro(selectedSnack, meal.macros)
+      calculateCarbMacro(selectedSnack, meal.macrosLimit, meal.macrosFilled)
     }
   }
 
@@ -49,7 +49,7 @@ export const populateMealPlanStructure = (
       if (isProteinWhey && !isAddedProtenWhey[key]) {
         isAddedProtenWhey[key] = true
         meal.items = [...meal.items, ProteinsBank.proteinWhey]
-        calculateProteinMacro(ProteinsBank.proteinWhey, meal.macros)
+        calculateProteinMacro(ProteinsBank.proteinWhey, meal.macrosLimit, meal.macrosFilled)
       }
     }
   }
@@ -64,11 +64,11 @@ export const populateMealPlanStructure = (
           value: 'mixedVegis',
           icon: '🥒🍅🥬',
           weight: 'eat as you wish',
-          calculatedMacros: { pro: 0, carb: 0, fat: 0 }
+          calculatedItemMacros: { pro: 0, carb: 0, fat: 0 }
         }
       ]
     }
-    calculateFatMacro(regularOil, meal.macros)
+    calculateFatMacro(regularOil, meal.macrosLimit, meal.macrosFilled)
   }
 
   const addMealFood = (
@@ -97,59 +97,64 @@ export const populateMealPlanStructure = (
     meal.items = [...meal.items, itemToAdd]
 
     type === 'carb'
-      ? calculateCarbMacro(itemToAdd, meal.macros)
-      : calculateProteinMacro(itemToAdd, meal.macros)
+      ? calculateCarbMacro(itemToAdd, meal.macrosLimit, meal.macrosFilled)
+      : calculateProteinMacro(itemToAdd, meal.macrosLimit, meal.macrosFilled)
   }
 
-  const calculateCarbMacro = (item, macros) => {
-    // Step 1: Create new properties to add to the item
-    item.weight = 0
-    item.calculatedMacros = { carb: 0, pro: 0, fat: 0 }
+  const calculateCarbMacro = (item, macrosLimit, macrosFilled) => {
+    const { carbs, protein, fat } = item.nutrientFacts
+    const portionWeight = item.portionWeight
 
-    // Step 2: Calculate how much weight of the specific item we need to reach the macros.carb value
-    const foodWeight = (macros.carb / item.nutrientFacts.carbs) * item.portionWeight
+    // Calculate how much weight of the specific item we need to reach the macros.carb value
+    const foodWeight = (macrosLimit.carb / carbs) * portionWeight
 
-    // Step 3: Fill the calculated amount of macros to the properties
+    // Assign calculated values to the item
     item.weight = Math.round(foodWeight) + 'g'
-    item.calculatedMacros.carb = macros.carb
-    item.calculatedMacros.pro = Math.round(
-      (item.nutrientFacts.protein / item.portionWeight) * foodWeight
-    )
-    item.calculatedMacros.fat = Math.round(
-      (item.nutrientFacts.fat / item.portionWeight) * foodWeight
-    )
+    item.calculatedItemMacros = {
+      carb: macrosLimit.carb,
+      pro: Math.round((protein / portionWeight) * foodWeight),
+      fat: Math.round((fat / portionWeight) * foodWeight)
+    }
+
+    // Update macrosFilled with the calculated amounts
+    macrosFilled.carb = macrosLimit.carb
+    macrosFilled.pro = item.calculatedItemMacros.pro
+    macrosFilled.fat = item.calculatedItemMacros.fat
   }
 
-  const calculateProteinMacro = (item, macros) => {
-    item.weight = 0
-    item.calculatedMacros = { carb: 0, pro: 0, fat: 0 }
+  const calculateProteinMacro = (item, macrosLimit, macrosFilled) => {
+    const { protein, fat } = item.nutrientFacts
+    const portionWeight = item.portionWeight
+
     // this available protein should be refactored
-    const availableProtein = macros.pro - item.calculatedMacros.pro
-    const foodWeight = (availableProtein / item.nutrientFacts.protein) * item.portionWeight
+    const availableProtein = macrosLimit.pro - macrosFilled.pro
+    const foodWeight = (availableProtein / protein) * portionWeight
 
+    // Assign calculated values to the item
     item.weight = Math.round(foodWeight) + 'g'
-    // No need to add the protein's carb
-    item.calculatedMacros.pro += +availableProtein
-    item.calculatedMacros.fat += Math.round(
-      (item.nutrientFacts.fat / item.portionWeight) * foodWeight
-    )
+    item.calculatedItemMacros = {
+      carb: 0,
+      pro: availableProtein,
+      fat: Math.round((fat / item.portionWeight) * foodWeight)
+    }
+
+    // Update macrosFilled with the calculated amounts
+    macrosFilled.fat = item.calculatedItemMacros.fat
   }
 
-  const calculateFatMacro = (item, macros) => {
-    item.weight = 0
-    item.calculatedMacros = { carb: 0, pro: 0, fat: 0 }
+  const calculateFatMacro = (item, macrosLimit, macrosFilled) => {
+    const { fat } = item.nutrientFacts
+    const portionWeight = item.portionWeight
 
-    const availableFat = macros.fat - item.calculatedMacros.fat
+    const availableFat = macrosLimit.fat - macrosFilled.fat
     if (availableFat < 0) {
-      item.calculatedMacros.fat = 0
+      item.calculatedItemMacros.fat = 0
       return
     }
-    const foodWeight = (availableFat / item.nutrientFacts.fat) * item.portionWeight
+    const foodWeight = (availableFat / fat) * portionWeight
 
     item.weight = Math.round(foodWeight) + 'g'
-    item.calculatedMacros.fat = Math.round(
-      (item.nutrientFacts.fat / item.portionWeight) * foodWeight
-    )
+    item.calculatedItemMacros.fat = Math.round((fat / portionWeight) * foodWeight)
   }
 
   // Function to populate meals for a day
