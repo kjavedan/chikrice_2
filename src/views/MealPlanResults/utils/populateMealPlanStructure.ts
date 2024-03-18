@@ -3,6 +3,8 @@ import FruitsBank from '@/data/fruits'
 import ProteinsBank from '@/data/proteins'
 import regularOil from '@/data/fats/regularOil'
 import { mealPriorityListCarbs, mealPriorityListProteins } from './priorityList'
+import eggWhite from '@/data/proteins/eggWhite'
+import eggs from '@/data/proteins/eggs'
 
 interface MealPlan {
   [key: string]: {
@@ -93,12 +95,32 @@ export const populateMealPlanStructure = (
         : categoryItems[Math.floor(Math.random() * categoryItems.length)]
 
     const itemToAdd = selectedItem instanceof Object ? selectedItem : categoryBank[selectedItem]
+    const isEggs = itemToAdd.value === 'eggs'
 
-    meal.items = [...meal.items, itemToAdd]
+    meal.items = [...meal.items, ...(isEggs ? eggsToAdd(meal) : [itemToAdd])]
 
+    if (isEggs) return
     type === 'carb'
       ? calculateCarbMacro(itemToAdd, meal.macrosLimit, meal.macrosFilled)
       : calculateProteinMacro(itemToAdd, meal.macrosLimit, meal.macrosFilled)
+  }
+
+  const eggsToAdd = (meal) => {
+    const eggsLimit = {
+      ...meal.macrosLimit,
+      pro: meal.macrosLimit.pro * 0.4
+    }
+    const eggWhiteLimit = {
+      ...meal.macrosLimit,
+      pro: meal.macrosLimit.pro * 0.6
+    }
+    const filled = {
+      ...meal.macrosFilled,
+      pro: meal.macrosFilled.pro * 0.5
+    }
+    calculateProteinMacro(eggWhite, eggWhiteLimit, filled)
+    calculateProteinMacro(eggs, eggsLimit, filled)
+    return [eggWhite, eggs]
   }
 
   const calculateCarbMacro = (item, macrosLimit, macrosFilled) => {

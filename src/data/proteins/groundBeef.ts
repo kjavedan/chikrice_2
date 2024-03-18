@@ -13,7 +13,7 @@ export default {
     calories: 250,
     protein: 26,
     carbs: 0,
-    fat: 8
+    fat: 5
   },
 
   // RAW NUTRIENT_FACTS
