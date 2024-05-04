@@ -7,7 +7,7 @@ Traditionally, devising a diet plan involves intricate calculations, time invest
 ## Current Development Stage
 Chikrice is currently in its initial phase, with ongoing development efforts aimed at further enhancing its functionality to achieve its objectives.
 
-Technologies Utilized
+## Technologies Utilized
 - Vue.js (including router and store)
 - Element Plus
 - Typescript
